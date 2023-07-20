@@ -1,0 +1,65 @@
+<pre class="script-jem">
+    const links = document.querySelectorAll('.navBarLateral a');
+    
+    const contents = document.querySelectorAll('.contenidos &gt; div');
+    
+    function showContent(event) {
+      event.preventDefault();
+    
+      const target = this.getAttribute('href').substring(1);
+    
+    
+      contents.forEach(content =&gt; content.classList.add('hidden'));
+    
+    
+      document.getElementById(target).classList.remove('hidden');
+    
+    }
+    
+    
+    links.forEach(link =&gt; link.addEventListener('click', showContent));</pre
+>
+
+<div class="particularidades">
+	<nav class="navBarLateral">
+		<ul>
+			<li><a href="/#contenidoBuenosAires">Región Buenos Aires</a></li>
+			<li><a href="/#contenidoCordoba">Región Córdoba</a></li>
+			<li><a href="/#contenidoCuyo">Región Cuyo</a></li>
+			<li><a href="/#contenidoMetropolitana">Región Metropolitana</a></li>
+			<li><a href="/#contenidoNEA">Región NEA</a></li>
+			<li><a href="/#contenidoNOA">Región NOA</a></li>
+			<li><a href="/#contenidoSur">Región Sur</a></li>
+		</ul>
+	</nav>
+
+	<div class="contenidos">
+		<div class="hidden" id="contenidoBuenosAires">
+			<h2>contenidoBuenosAires</h2>
+		</div>
+
+		<div class="hidden" id="contenidoCordoba">
+			<h2>contenidoCordoba</h2>
+		</div>
+
+		<div class="hidden" id="contenidoCuyo">
+			<h2>contenidoCuyo</h2>
+		</div>
+
+		<div class="hidden" id="contenidoMetropolitana">
+			<h2>contenidoMetropolitana</h2>
+		</div>
+
+		<div class="hidden" id="contenidoNEA">
+			<h2>contenidoNEA</h2>
+		</div>
+
+		<div class="hidden" id="contenidoNOA">
+			<h2>contenidoNOA</h2>
+		</div>
+
+		<div class="hidden" id="contenidoSur">
+			<h2>contenidoSur</h2>
+		</div>
+	</div>
+</div>

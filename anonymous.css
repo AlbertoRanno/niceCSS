@@ -1,0 +1,6 @@
+/* Modificación de la ubicación de la Tabla de contenido */
+#mt-toc-container{
+  position: sticky;
+  right: 0;
+  top: 60px;
+}
