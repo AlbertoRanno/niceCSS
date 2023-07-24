@@ -215,7 +215,7 @@ p a {
 	right: 0;
 	top: 60px;
 	background-color: var(--background-light-blue-2);
-	max-height: calc(90vh - 60px);
+	height: calc(80vh - 60px);
     overflow: auto;
 }
 .mt-new-features-container {
