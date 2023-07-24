@@ -559,6 +559,18 @@ p a {
 	border-color: var(--alert);
 }
 
+.warningRegistration h2,
+.warningChannels h2,
+.warningImportant h2{
+	margin-top:0;
+}
+
+.warningRegistration p,
+.warningChannels p,
+.warningImportant p{
+	margin-bottom: .5em;
+}
+
 /* Comentarios */
 .comment,
 .mt-comment-widget.cke_widget_element {
