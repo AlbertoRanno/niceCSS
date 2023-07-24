@@ -722,3 +722,15 @@ td,
 	line-height: 22px;
 	color:var(--primary-blue);
 }
+
+/* Button */
+.btn.primary, .mt-button-primary, .ui-button-primary, .ui-widget button.ui-button-primary, a.ui-button-primary, button.primary, input[type=button].ui-button-primary, input[type=submit].ui-button-primary{
+	background-color: var(--primary-blue);
+	color: var(--white);
+	border: 2px solid var(--primary-blue);
+}
+
+.no-touch .btn.primary:hover, .no-touch .mt-button-primary:hover, .no-touch .ui-button-primary:hover, .no-touch .ui-widget button.ui-button-primary:hover, .no-touch a.ui-button-primary:hover, .no-touch button.primary:hover, .no-touch input[type=button].ui-button-primary:hover, .no-touch input[type=submit].ui-button-primary:hover{
+	background-color: var(--white);
+	color: var(--primary-blue);
+}
