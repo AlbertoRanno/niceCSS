@@ -734,6 +734,7 @@ input[type=submit].ui-button-primary{
 	background-color: var(--background-light-blue);
 	border: 2px solid var(--primary-blue);
 	border-radius: 0;
+	color: var(--primary-blue);
 }
 
 .no-touch .btn.primary:hover, 
