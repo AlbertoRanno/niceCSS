@@ -748,3 +748,9 @@ input[type=submit].ui-button-primary{
 	background-color: var(--secondary-light-blue);
 	color: var(--primary-blue);
 }
+
+
+/* Solapas */
+.ui-tabs .ui-tabs-nav{
+	background: var(--background-light-blue) !important;
+}
