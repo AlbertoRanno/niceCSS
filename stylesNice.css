@@ -505,7 +505,9 @@ p a {
 .no-touch tr:hover td {
 	background-color: var(--background-light-blue-2);
 }
-
+.dataTable td, .mt-grid .ui-table td, .ui-table td, .ui-widget .ui-table td, td {
+	padding: 0.5em 1em;
+}
 /* Toggle container */
 .mt-toggle-container {
 	background-color: var(--background-light-blue);
