@@ -785,7 +785,7 @@ input[type=submit].ui-button-primary{
 	column-count: 3;
 }
 /* cuatro columnas*/
-.generateColumns.fourtwoColumns{
+.generateColumns.fourColumns{
 	column-count: 4;
 }
 .generateColumns p{
