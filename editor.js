@@ -6,8 +6,7 @@ CKEDITOR.editorConfig = function(config) {
     config.stylesSet.push({ name : 'warningChannels', element : 'p', wrap:true, attributes : { 'class' : 'warningChannels' } });
     config.stylesSet.push({ name : 'warningRegistration', element : 'p', wrap:true, attributes : { 'class' : 'warningRegistration'} });
     config.stylesSet.push({ name : 'noContent', wrap:false, attributes : { 'class' : 'noContent'} });
-    
-    config.stylesSet.push({ name : 'combinarCeldas', element : 'div', wrap:true, attributes : { 'class' : 'combinarCeldas' },{'colspan' : '2'} {'rowspan' : '1' }});
+    config.stylesSet.push({ name : 'combinarCeldas', element : 'div', wrap:true, attributes : { 'class' : 'combinarCeldas' }});
 
     config.stylesSet.push({ name : '2 Columnas', element : 'div', wrap:true, attributes : { 'class' : 'generateColumns twoColumns' } });
     config.stylesSet.push({ name : '3 Columnas', element : 'div', wrap:true, attributes : { 'class' : 'generateColumns threeColumns' } });
