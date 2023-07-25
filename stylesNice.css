@@ -770,3 +770,21 @@ input[type=submit].ui-button-primary{
 .ui-tabs .ui-tabs-nav{
 	background: var(--background-light-blue) !important;
 }
+
+/* Encolumnado de texto */
+.generateColumns{
+	column-gap: 20px;
+	display: 100%;
+}
+/* dos columnas */
+.generateColumns.twoColumns{
+	column-count: 2;
+}
+/* tres columnas */
+.generateColumns.threeColumns{
+	column-count: 3;
+}
+/* cuatro columnas*/
+.generateColumns.fourtwoColumns{
+	column-count: 4;
+}
