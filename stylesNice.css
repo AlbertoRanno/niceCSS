@@ -213,7 +213,7 @@ p a {
 #mt-toc-container {
 	position: sticky;
 	right: 0;
-	top: 60px;
+	top: 120px;
 	background-color: var(--background-light-blue-2);
 	max-height: 70vh;
     overflow: auto;
