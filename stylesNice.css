@@ -60,6 +60,7 @@ h6 {
 	font-family: var(--font-family-primary) !important;
 	color: var(--primary-black) !important;
 	font-weight: 700 !important;
+	margin:1em 0 0.5em !important;
 }
 
 /* Estilos generales de fuente y color */
@@ -799,7 +800,7 @@ input[type=submit].ui-button-primary{
 .mt-section{
 	border-bottom: 2px solid var(--primary-black);
 	padding-bottom: 1em;
-	margin-bottom: 1em;
+	margin-bottom: 2em;
 }
 .mt-section .mt-section{
 	border-bottom: 2px solid var(--medium-gray);
