@@ -500,7 +500,9 @@ p a {
 	cursor: pointer;
 }
 .EXPAND_COLLAPSE dd {
-	/* display: none; */
+	/* display: none; 
+                         Lo pasé a un CSS de la NavBar para que cuando editen una página,
+                         en esa en concreto, vean el contenido colapsado, y en las otras siga funcionando */
 }
 .no-touch .ui-table tr:hover,
 .no-touch .ui-table tr:hover td,
@@ -653,7 +655,9 @@ td,
 }
 
 .particularidades .hidden {
-	display: none;
+	/* display: none; 
+                         Lo pasé a un CSS de la NavBar para que cuando editen una página,
+                         en esa en concreto, vean el contenido colapsado, y en las otras siga funcionando */
 }
 
 /* Accordion */
@@ -714,7 +718,9 @@ td,
 
 .accordion-body {
 	padding: 16px 16px 24px;
-	display: none;
+	/* display: none; 
+                         Lo pasé a un CSS de la NavBar para que cuando editen una página,
+                         en esa en concreto, vean el contenido colapsado, y en las otras siga funcionando */
 }
 
 .accordion-body.show {
