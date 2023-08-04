@@ -29,6 +29,9 @@
 	--alert: #ffba33;
 	--alert-2: #7c6600;
 	--alert-background: #fdf8c8;
+	
+	--definition: #4a88cc;
+	--definition-background: #D8E4F1;
 
 	/* Font family */
 	--font-family-primary: "Nunito", sans-serif;
@@ -519,6 +522,7 @@ p a {
 }
 
 /* Estilos "Warnings" a corregir */
+.definitionBox,
 .warningRegistration,
 .warningChannels,
 .warningImportant {
@@ -565,17 +569,21 @@ p a {
 	background-color: var(--alert-background);
 	border-color: var(--alert);
 }
-
+.definitionBox,
 .warningRegistration h2,
 .warningChannels h2,
 .warningImportant h2{
 	margin-top:0;
 }
-
+.definitionBox,
 .warningRegistration p,
 .warningChannels p,
 .warningImportant p{
 	margin-bottom: .5em;
+}
+.definitionBox {
+ background-color: var(--definition-background);
+ border-color: var(--definition);
 }
 
 /* Comentarios */
