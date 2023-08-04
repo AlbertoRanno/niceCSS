@@ -625,6 +625,9 @@ td,
 	font-weight: 400;
 	color: var(--primary-black);
 }
+thead{
+  text-align: center;
+}
 
 /* Particularidades */
 .particularidades {
