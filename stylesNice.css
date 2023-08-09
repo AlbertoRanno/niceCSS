@@ -504,8 +504,7 @@ p a {
 }
 .EXPAND_COLLAPSE dd {
 	/* display: none; 
-                         Lo pasé a un CSS de la NavBar para que cuando editen una página,
-                         en esa en concreto, vean el contenido colapsado, y en las otras siga funcionando */
+                         en CSS de la NavBar */
 }
 .no-touch .ui-table tr:hover,
 .no-touch .ui-table tr:hover td,
@@ -525,7 +524,7 @@ td {
 	background-color: var(--background-light-blue);
 }
 
-/* Estilos "Warnings" a corregir */
+/* Estilos "Warnings" */
 .definitionBox,
 .warningRegistration,
 .warningChannels,
@@ -671,8 +670,7 @@ thead {
 
 .particularidades .hidden {
 	/* display: none; 
-                         Lo pasé a un CSS de la NavBar para que cuando editen una página,
-                         en esa en concreto, vean el contenido colapsado, y en las otras siga funcionando */
+                         en CSS de la NavBar */
 }
 
 /* Accordion */
@@ -734,8 +732,7 @@ thead {
 .accordion-body {
 	padding: 16px 16px 24px;
 	/* display: none; 
-                         Lo pasé a un CSS de la NavBar para que cuando editen una página,
-                         en esa en concreto, vean el contenido colapsado, y en las otras siga funcionando */
+                         en CSS de la NavBar */
 }
 
 .accordion-body.show {
@@ -918,3 +915,8 @@ input[type="submit"].ui-button-primary {
 	padding: 16px 0;
 	border-bottom: 2px solid var(--light-gray);
 }
+
+/* Esconder clasificaciones default de los filtros de búsqueda */
+.mt-search-filters-classification-article-howto,
+.mt-search-filters-classification-article-topic,
+.mt-search-filters-classification-article-reference { display: none;}
