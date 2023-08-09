@@ -920,3 +920,10 @@ input[type="submit"].ui-button-primary {
 .mt-search-filters-classification-article-howto,
 .mt-search-filters-classification-article-topic,
 .mt-search-filters-classification-article-reference { display: none;}
+
+/* 404 page not found */
+body[class*="pagenotfound"] h1#title{
+	font-size: 4em !important;
+	display:flex;
+	justify-content: center;
+}
