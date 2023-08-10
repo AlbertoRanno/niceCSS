@@ -225,6 +225,7 @@ p a {
 .mt-new-features-container {
 	z-index: 9999999999;
 }
+
 /* Navbar Header logo menu*/
 .elm-header-logo-menu .navbar-header-logo a {
 	display: block;
@@ -242,6 +243,9 @@ p a {
 	left: 0;
 	width: 100%;
 	z-index: 99999;
+}
+body[class*="search"] .elm-header-logo-menu{
+	position: relative;
 }
 
 .elm-header-logo-menu ul {
@@ -416,6 +420,10 @@ p a {
 	.elm-header-logo-container,
 	.elm-header-logo-menu {
 		height: 80px;
+	}
+	body[class*="search"] .elm-header-logo-menu,
+	body[class*="search"] .elm-header-logo-container{
+		height: 90px;
 	}
 	.elm-header-logo-menu .navbar-header-logo a img {
 		height: 50px;
