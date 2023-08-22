@@ -230,7 +230,7 @@ p a {
 .elm-header-logo-menu .navbar-header-logo a {
 	display: block;
 }
-.elm-header-logo-menu .navbar-header-logo a img {
+.elm-header-logo-menu .navbar-header-logo img {
 	display: block;
 	height: 50px;
 }
@@ -277,14 +277,14 @@ body[class*="search"] .elm-header-logo-menu{
 	text-decoration: none;
 	align-items: center;
 }
-.elm-header-logo-menu li.has-submenu a img {
+.elm-header-logo-menu li.has-submenu img {
 	display: block;
 	margin: 0;
 	height: 40px;
 	z-index: 10;
 }
 
-.elm-header-logo-menu li.has-submenu a img {
+.elm-header-logo-menu li.has-submenu img {
 	display: none;
 }
 .elm-header-nav-container .nav-toggle-label::after {
@@ -304,6 +304,8 @@ body[class*="search"] .elm-header-logo-menu{
 		height: 100%;
 		display: flex;
 		align-items: center;
+		width: 29px;
+		height: 29px;
 	}
 	.elm-header-nav-container .nav-toggle-label span,
 	.elm-header-nav-container .nav-toggle-label span::before,
@@ -361,7 +363,7 @@ body[class*="search"] .elm-header-logo-menu{
 		overflow: auto;
 		box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.29);
 	}
-	.elm-header-logo-menu li.has-submenu a img {
+	.elm-header-logo-menu li.has-submenu img {
 		display: none;
 	}
 	.elm-header-logo-menu .has-submenu .submenu {
@@ -378,7 +380,7 @@ body[class*="search"] .elm-header-logo-menu{
 	body[class*="search"] .elm-header-logo-container{
 		height: 103px;
 	}
-	.elm-header-logo-menu .navbar-header-logo a img {
+	.elm-header-logo-menu .navbar-header-logo img {
 		height: 40px;
 	}
 	.elm-header-nav-container .nav-toggle-label {
@@ -410,7 +412,7 @@ body[class*="search"] .elm-header-logo-menu{
 		position: absolute;
 		z-index: 1;
 	}
-	.elm-header-logo-menu li.has-submenu a img {
+	.elm-header-logo-menu li.has-submenu img {
 		display: block;
 	}
 	.elm-header-logo-menu .has-submenu .submenu {
@@ -429,7 +431,7 @@ body[class*="search"] .elm-header-logo-menu{
 	body[class*="search"] .elm-header-logo-container{
 		height: 90px;
 	}
-	.elm-header-logo-menu .navbar-header-logo a img {
+	.elm-header-logo-menu .navbar-header-logo img {
 		height: 50px;
 	}
 	.elm-header-logo-menu li.has-submenu > a {
@@ -443,7 +445,7 @@ body[class*="search"] .elm-header-logo-menu{
 	.elm-header-logo-menu li.has-submenu > a {
 		width: auto;
 	}
-	.elm-header-logo-menu li.has-submenu a img {
+	.elm-header-logo-menu li.has-submenu img {
 		margin: 0 10px 0 0;
 	}
 }
