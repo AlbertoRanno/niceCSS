@@ -374,6 +374,10 @@ body[class*="search"] .elm-header-logo-menu{
 	.elm-header-logo-menu {
 		height: 91px;
 	}
+	body[class*="search"] .elm-header-logo-menu,
+	body[class*="search"] .elm-header-logo-container{
+		height: 103px;
+	}
 	.elm-header-logo-menu .navbar-header-logo a img {
 		height: 40px;
 	}
