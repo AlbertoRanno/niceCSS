@@ -167,6 +167,9 @@ p a {
 .elm-user-pro-member .mt-quick-search-container .mt-button {
 	color: var(--primary-black) !important;
 }
+.elm-user-pro-member .mt-quick-search-container .mt-search {
+	color: var(--primary-black) !important;
+}
 
 .elm-content-container {
 	z-index: inherit;
