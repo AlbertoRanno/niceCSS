@@ -1090,7 +1090,10 @@ body[class*="pagenotfound"] pre.script:before{
 }
 @media (min-width: 68.5em) {
 	body{
-		margin-top: 28px !important;
+		margin-top: 23px !important;
+	}
+	body.columbia-special-search{
+		margin-top: 28px !important
 	}
 }
 
