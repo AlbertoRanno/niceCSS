@@ -1097,3 +1097,24 @@ body[class*="pagenotfound"] pre.script:before{
 	}
 }
 
+.mt-lp-progress-bar a{
+	height: auto;
+	max-width: 11em;
+	width: auto;
+	margin-top: 10px;
+}
+.mt-lp-progress-bar a span{
+	position: absolute;
+	top:0;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+.mt-lp-progress-bar li:first-child a span{
+	left: 0;
+	transform: translate(0,0);
+}
+.mt-lp-progress-bar li:last-child a span{
+	left: inherit;
+	right: 0;
+	transform: translate(0,0);
+}
