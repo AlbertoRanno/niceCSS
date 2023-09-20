@@ -1101,7 +1101,16 @@ body[class*="pagenotfound"] pre.script:before{
 	height: auto;
 	max-width: 11em;
 	width: auto;
-	margin-top: 10px;
+	margin-top: 15px;
+	line-height: 1em;
+	padding-left: 18px;
+	text-indent: -18px;
+}
+.mt-lp-progress-bar .mt-lp-page-previous a {
+	color: #666;
+}
+.mt-lp-progress-bar .mt-lp-page-previous a:hover {
+	color: var(--primary-blue);
 }
 .mt-lp-progress-bar a span{
 	position: absolute;
