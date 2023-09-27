@@ -1144,3 +1144,71 @@ li.elm-pdf-export {
 	border-top:2px solid var(--background-light-blue);
 	padding-top:1em;
 }
+
+footer{
+	background: var(--primary-blue);
+	padding: 20px 0;
+}
+
+
+footer .container {
+    box-sizing: border-box;
+    flex: 1 0 auto;
+    min-width: 0;
+    outline: 0;
+    padding: .65rem;
+    position: relative;
+    z-index: 1
+}
+footer .container .row{
+	display: flex;
+	gap:40px;
+}
+@media all and (min-width: 18.75em) {
+    footer .container {
+        padding:.65rem .65rem 4em
+    }
+}
+@media all and (min-width: 25em) {
+    footer .container {
+        padding:.65rem .65rem 4em
+    }
+}
+@media all and (min-width: 37.5em) {
+    footer .container {
+        padding:1.3rem
+    }
+}
+@media all and (min-width: 83em) {
+    footer .container {
+        margin:0 auto;
+        max-width: 80em;
+        min-width: 80em;
+        padding: 1.3rem 0
+    }
+}
+
+
+footer a:visited,
+footer p,
+footer a{
+	color:var(--white);
+	font-size: 12px;
+	line-height: 16px;
+	font-weight: 600;
+	font-family: var(--font-family-secondary);
+}
+footer a:hover{
+	color:var(--white) !important;
+	text-decoration: underline;
+}
+
+footer .footer-links{
+	padding:0;
+	margin: 0;
+	display: flex;
+	gap:40px;
+}
+footer .footer-links::marker{
+	display: none;
+}
