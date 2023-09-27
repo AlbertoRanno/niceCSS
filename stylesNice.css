@@ -1134,3 +1134,13 @@ body[class*="pagenotfound"] pre.script:before{
 li.elm-pdf-export {
     display: none;
 }
+
+/* Los más vistos Home */
+.columbia-page-home .widget-popular ul{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.columbia-page-home h3:has(+ .widget-popular){
+	border-top:2px solid var(--background-light-blue);
+	padding-top:1em;
+}
