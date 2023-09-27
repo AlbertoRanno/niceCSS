@@ -1097,6 +1097,8 @@ body[class*="pagenotfound"] pre.script:before{
 	}
 }
 
+/*Etiquetas del PATH o paso a paso */
+
 .mt-lp-progress-bar a{
 	height: auto;
 	max-width: 11em;
@@ -1126,4 +1128,9 @@ body[class*="pagenotfound"] pre.script:before{
 	left: inherit;
 	right: 0;
 	transform: translate(0,0);
+}
+
+/* Oculta el icono de descarga de PDF de las paginas */
+li.elm-pdf-export {
+    display: none;
 }
