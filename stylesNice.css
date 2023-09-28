@@ -527,6 +527,11 @@ p a {
 	color: var(--secondary-light-blue);
 }
 
+/*Necesario porque cuando oculto el input del buscador en el home, sin esto el menu se ve mal*/
+.elm-header-user-nav {
+    min-height: 45px;
+}
+
 /* Tablas y Listas Desplegables */
 .EXPAND_COLLAPSE dt {
 	color: var(--background-light-blue-2);
@@ -1217,3 +1222,4 @@ li.elm-pdf-export {
 .footer .footer-links::marker{
 	display: none;
 }
+
