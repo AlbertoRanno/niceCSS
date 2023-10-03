@@ -1144,6 +1144,11 @@ li.elm-pdf-export {
 .columbia-page-home .widget-popular ul{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+	grid-column-gap: 20px;
+	padding:0;
+}
+.columbia-page-home .widget-popular ul li{
+	margin-left: 20px;
 }
 .columbia-page-home h3:has(+ .widget-popular){
 	border-top:2px solid var(--background-light-blue);
