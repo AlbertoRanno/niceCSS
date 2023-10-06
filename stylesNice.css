@@ -1249,3 +1249,7 @@ li.elm-pdf-export {
 .titulos_columnas {
 color: white!important; 
 }
+/*Sugerir nuevo contenido*/
+.sugerirContenidoImg {
+	max-height: 25px;
+	}
