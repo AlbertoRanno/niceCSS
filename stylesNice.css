@@ -1313,7 +1313,14 @@ li.elm-pdf-export {
     display: flex;
     text-decoration: none;
 	align-items: center;
+	margin-bottom:16px;
+	justify-content: center;
 } 
+@media all and (min-width: 37.5em) {
+    .telefonos_content a {
+		justify-content: flex-start;
+    }
+}
 .telefonos_content img {
     width: 15px; 
     height: auto;
@@ -1383,80 +1390,6 @@ color: white!important;
 	color:var(--secondary-light-blue);
 }
 .sugerirContenidoBoton .sugerirContenidoImg {
-	height: 16px;
+	height: 20px;
 }
 
-.telefonos_content a {
-    display: block;
-    text-decoration: none;
-} 
-.telefonos_content img {
-    width: 15px; 
-    height: auto;
-}
-.titulos_columnas {
-color: white!important; 
-}
-
-
-
-/* Menú Consejos Búsqueda */
-.consejosDesplegables {
-  display: none;
-}
-.consejo-busqueda-area .navbar-header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-.consejo-busqueda-area ul ul{
-	background: var(--background-light-blue);
-	position: absolute;
-	box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.29);
-	border-radius: 0 8px 8px 8px;
-	width: 100%;
-	top:34px;
-	left:15px;
-	padding: 0.4em 0.8em;
-}
-
-@media all and (min-width: 25em) {
-    .consejo-busqueda-area ul ul {
-        width: 90%;
-    }
-}
-@media all and (min-width: 37.5em) {
-    .consejo-busqueda-area ul ul {
-        width: 500px;
-    }
-}
-
-.consejo-busqueda-area ul ul li{
-	border-bottom: 2px solid var(--white);
-	padding-bottom: 0.25em;
-}
-.consejo-busqueda-area ul ul li:last-child{
-	border-bottom: none;
-	padding-bottom: 0;
-}
-
-/*Sugerir nuevo contenido*/
-.sugerirContenidoBoton{
-	margin: 5px 15px;
-	display: flex !important;
-	align-items: center;
-	gap: 6px;
-	color: var(--white);
-	text-decoration: underline;
-	cursor: pointer;
-	flex-direction: row-reverse;
-	font-size: 14px;
-    line-height: 1.375em;
-    font-weight: 500;
-}
-.sugerirContenidoBoton:hover{
-	color:var(--secondary-light-blue);
-}
-.sugerirContenidoBoton .sugerirContenidoImg {
-	height: 16px;
-}
