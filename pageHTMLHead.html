@@ -36,6 +36,14 @@
         var searchField = document.getElementById('mt-site-search-input');
         if (searchField) {searchField.placeholder = '';}
 
+        //******************PARA METRICAS TOC******************************** 
+        var elementNav = document.querySelector(".mt-toc-content");
+        var contenido;
+        elementNav.addEventListener("click", function(e){
+        if(e.target.tagName === "A" && e.target.parentNode.tagName === "LI"){
+        contenido = e.target.textContent;
+        console.log("Click en: " + contenido);}});
+
         //****************************LISTA RESULTADOS************************************
         if (window.location.href.startsWith("https://osde-prod1.mindtouch.us/Special:Search")) {
         setTimeout(function () {
@@ -84,7 +92,7 @@
             link1.appendChild(link1Anchor);
             var link2 = document.createElement("li");
             var link2Anchor = document.createElement("a");
-            link2Anchor.href = "https://success.mindtouch.com/Manage/Search/MindTouch_Search/Advanced_search_options?mt-language=ES";
+            link2Anchor.href = "https://osde-prod1.mindtouch.us/tutoriales/edicion/opciones_de_busqueda_avanzada";
             link2Anchor.textContent = "Tips avanzados de b\u00FAsqueda";
             link2.appendChild(link2Anchor);
             var link3 = document.createElement("li");
@@ -296,7 +304,7 @@
         //Sugerir nuevo contenido
         let sugerirContenidoContenedor = document.createElement('li');
         sugerirContenidoContenedor.classList.add('sugerirContenidoContenedor');
-        let sugerirContenidoBoton = document.createElement('div');
+        let sugerirContenidoBoton = document.createElement('a');
         sugerirContenidoBoton.classList.add('sugerirContenidoBoton');
         sugerirContenidoBoton.id = 'sugerirContenidoBoton';
         sugerirContenidoBoton.textContent = "Sugerir nuevo contenido";
@@ -366,7 +374,7 @@
         let listItemCirugias = document.createElement('li');
         let linkCirugias = document.createElement('a');
         linkCirugias.href = "/Cobertura/Cirugias";
-        linkCirugias.textContent = "Cirugias";
+        linkCirugias.textContent = "Cirug\u00EDas";
         listItemCirugias.appendChild(linkCirugias);
         let listItemMedicamentos = document.createElement('li');
         let linkMedicamentos = document.createElement('a');
@@ -376,7 +384,7 @@
         let listItemPracticas = document.createElement('li');
         let linkPracticas = document.createElement('a');
         linkPracticas.href = "/Cobertura/practicas";
-        linkPracticas.textContent = "Practicas";
+        linkPracticas.textContent = "Pr\u00E1cticas";
         listItemPracticas.appendChild(linkPracticas);
         ulSubListCobertura.appendChild(listItemCirugias);
         ulSubListCobertura.appendChild(listItemMedicamentos);
@@ -414,7 +422,7 @@
         let listItemMovimientosPadron = document.createElement('li');
         let linkMovimientosPadron = document.createElement('a');
         linkMovimientosPadron.href = "/Afiliaciones/movimientos_padron";
-        linkMovimientosPadron.textContent = "Movimientos del padron";
+        linkMovimientosPadron.textContent = "Movimientos del padr\u00F3n";
         listItemMovimientosPadron.appendChild(linkMovimientosPadron);
         ulSubListAfiliaciones.appendChild(listItemAltas);
         ulSubListAfiliaciones.appendChild(listItemBajas);
@@ -431,7 +439,7 @@
         imgCobranzas.alt = "Icono";
         imgCobranzas.src = "/@api/deki/files/212/cobranzas.png";
         linkCobranzas.appendChild(imgCobranzas);
-        linkCobranzas.appendChild(document.createTextNode("Cobranzas"));
+        linkCobranzas.appendChild(document.createTextNode("Facturaci\u00F3n"));
         listItemCobranzas.appendChild(linkCobranzas);
         let ulSubListCobranzas = document.createElement('ul');
         ulSubListCobranzas.classList.add('submenu');
@@ -443,7 +451,7 @@
         let listItemCuentaDebitoAutomatico = document.createElement('li');
         let linkCuentaDebitoAutomatico = document.createElement('a');
         linkCuentaDebitoAutomatico.href = "/Cobranzas/Cuenta_debito_automatico";
-        linkCuentaDebitoAutomatico.textContent = "Cuenta debito automatico";
+        linkCuentaDebitoAutomatico.textContent = "Cuenta d\u00E9bito autom\u00E1tico";
         listItemCuentaDebitoAutomatico.appendChild(linkCuentaDebitoAutomatico);
         let listItemDeudaVencida = document.createElement('li');
         let linkDeudaVencida = document.createElement('a');
