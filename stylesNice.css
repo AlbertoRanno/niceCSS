@@ -1102,7 +1102,6 @@ body[class*="pagenotfound"] pre.script:before{
 }
 
 /*Etiquetas del PATH o paso a paso */
-
 .mt-lp-progress-bar a{
 	height: auto;
 	max-width: 11em;
@@ -1221,7 +1220,7 @@ body[class*="pagenotfound"] pre.script:before{
 }
 
 .mt-lp-page-listings, .mt-lp-progress-bar {
-    margin: 10px;
+    margin: 10px 10px 30px;
 }
 
 .mt-lp-progress-container {
@@ -1281,7 +1280,7 @@ li.elm-pdf-export {
 }
 .footer .container .colLeft{
 	padding-bottom: 24px;
-	border-bottom: 1px solid var(--white);
+	/* border-bottom: 1px solid var(--white); */
 	margin-bottom: 24px;
 	display: grid;
 	gap: 40px;
@@ -1405,9 +1404,9 @@ li.elm-pdf-export {
 .telefonos_content a {
     display: flex;
     text-decoration: none;
-	align-items: center;
 	margin-bottom:16px;
 	justify-content: center;
+	font-size: 14px;
 } 
 @media all and (min-width: 37.5em) {
     .telefonos_content a {
@@ -1424,6 +1423,7 @@ color: white!important;
 }
 .iconos_whatsapp {
     width: 25px!important;
+	margin: -6px 0 -6px -6px;
 }
 
 
@@ -1486,4 +1486,8 @@ color: white!important;
 }
 .sugerirContenidoBoton .sugerirContenidoImg {
 	height: 20px;
+}
+
+.colRight{
+	display: none;
 }
