@@ -463,6 +463,11 @@ p a {
 	.elm-header-logo-menu li.has-submenu img {
 		margin: 0 10px 0 0;
 	}
+
+	.mt-editor-default .elm-header-logo-container, 
+	.mt-editor-default .elm-header-logo-menu{
+		height: 107px;
+	}
 }
 
 .elm-header-logo-menu li a:focus {
@@ -1491,3 +1496,4 @@ color: white!important;
 .colRight{
 	display: none;
 }
+
