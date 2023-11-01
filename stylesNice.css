@@ -101,14 +101,18 @@ h1 span {
 	color: var(--primary-blue) !important;
 }
 /* Tamaño de fuente del encabezado h2 */
+h2 span,
 h2 {
 	font-size: 24px !important;
 	line-height: 1.41667em;
+	color: var(--primary-blue) !important;
 }
 /* Tamaño de fuente del encabezado h3 */
+h3 span,
 h3 {
 	font-size: 20px !important;
 	line-height: 1.3em;
+	color:var(--definition) !important;
 }
 /* Tamaño de fuente del encabezado h4 */
 h4 {
@@ -1225,7 +1229,7 @@ body[class*="pagenotfound"] pre.script:before{
 }
 
 .mt-lp-page-listings, .mt-lp-progress-bar {
-    margin: 10px 10px 30px;
+    margin: 10px 10px 40px;
 }
 
 .mt-lp-progress-container {
