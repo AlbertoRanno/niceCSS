@@ -112,7 +112,7 @@ h3 span,
 h3 {
 	font-size: 20px !important;
 	line-height: 1.3em;
-	color:var(--definition) !important;
+	color:var(--primary-gray) !important;
 }
 /* Tamaño de fuente del encabezado h4 */
 h4 {
