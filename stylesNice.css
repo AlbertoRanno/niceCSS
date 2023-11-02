@@ -683,6 +683,12 @@ thead {
 	text-align: center;
 }
 
+/*Tablas dentro de colapsables*/
+.EXPAND_COLLAPSE table {
+    width: auto !important; 
+    min-width: 157px; 
+}
+
 /* Particularidades */
 .particularidades {
 	display: flex;
@@ -1500,4 +1506,16 @@ color: white!important;
 .colRight{
 	display: none;
 }
+
+
+/*Oculto las URL de la lista de Resultados*/
+div.meta>div.url {
+	display: none;
+}
+
+/*Oculto paginado del Path, y de los pie de página*/
+.mt-article-pagination {
+	display: none !important;
+}
+
 
