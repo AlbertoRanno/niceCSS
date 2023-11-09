@@ -69,6 +69,10 @@
             filtros.style.top = '100px';}
          var filtroEstadoBorradores = document.querySelector(".mt-search-filters-classification-estado");
          if (filtroEstadoBorradores) {filtroEstadoBorradores.style.display = "none";}
+         var filtroTipoDeArticulo = document.querySelector(".mt-search-filters-classification-article");
+         if (filtroTipoDeArticulo) {filtroTipoDeArticulo.style.display = "none";}
+         var fitroPropietario = document.querySelector(".mt-search-filters-classification-propietario");
+         if (fitroPropietario) {fitroPropietario.style.display = "none";}
          
 
          var results = document.querySelectorAll("li.result");
@@ -82,7 +86,7 @@
                         window.location.href = originalUrl;}});}});
 
 
-   let ubicacion = document.querySelector(".mt-search-filters-option-location");
+     let ubicacion = document.querySelector(".mt-search-filters-option-location");
      if (ubicacion) {
          let textoEnNodo = ubicacion.childNodes[0];
          textoEnNodo.nodeValue = "Categor\u00EDas";}
@@ -90,6 +94,39 @@
      if (clasificacion) {
          let textoEnNodo = clasificacion.childNodes[0];
          textoEnNodo.nodeValue = "Caracter\u00EDsticas";}
+
+     let filtrosBuscador = document.getElementById('mt-search-spblls-filters');
+     let colapsablesPrincipales = filtrosBuscador.querySelectorAll('.mt-search-filters-option');
+     colapsablesPrincipales.forEach(colapsable => {
+         let botonToggle = colapsable.querySelector('.mt-search-filters-option-toggle');
+         let ulColapsablesInternos = colapsable.querySelector('.mt-search-filters-sub-options');
+
+        botonToggle.addEventListener('click', () => {
+            if (ulColapsablesInternos.style.display === 'none') {
+                ulColapsablesInternos.style.display = 'block';
+            } else {
+                ulColapsablesInternos.style.display = 'none';}});
+
+         botonToggle.classList.add('expanded');
+         botonToggle.setAttribute('aria-expanded', 'true');
+         ulColapsablesInternos.style.display = 'block';
+
+         let colapsablesInternos = ulColapsablesInternos.querySelectorAll('.mt-search-filters-classification-item');
+         colapsablesInternos.forEach(colapsablesInterno => {
+             let botonToggleInterno = colapsablesInterno.querySelector('.mt-search-filters-classification-toggle');
+             let subUlColapsablesInternos = colapsablesInterno.querySelector('.mt-search-filters-sub-options-classification');
+
+                botonToggleInterno.addEventListener('click', () => {
+                if (subUlColapsablesInternos.style.display === 'none') {
+                    subUlColapsablesInternos.style.display = 'block';
+                } else {
+                    subUlColapsablesInternos.style.display = 'none';}});
+
+             botonToggleInterno.classList.add('expanded');
+             botonToggleInterno.setAttribute('aria-expanded', 'true');
+             subUlColapsablesInternos.style.display = 'block';
+         });
+     });
 
    
 
@@ -288,7 +325,7 @@
         linkLogo.href = "/";
         let logoImg = document.createElement('img');
         logoImg.alt = "Logo de la empresa";
-        logoImg.src = "/@api/deki/files/118/LogoOsde.png";
+        logoImg.src = "/@api/deki/files/255/Logo_Biblos_OSDE_Azul.png";
         linkLogo.appendChild(logoImg);
         elementoLogo.appendChild(linkLogo);
         ulPrincipal.appendChild(elementoLogo);
