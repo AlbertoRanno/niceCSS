@@ -24,6 +24,17 @@
 
     document.addEventListener('DOMContentLoaded', function () {
 
+        //********************************** TOC ********************************************
+        let toc = document.getElementById('mt-toc-container');
+        let colapsada = toc.getAttribute('data-collapsed') === 'true';
+        if (colapsada) {
+            let tocContenido = toc.querySelector('.mt-toc-content');
+            toc.setAttribute('data-collapsed', colapsada ? 'false' : 'true');
+            tocContenido.style.maxHeight = colapsada ? tocContenido.scrollHeight + 'px' : '0px';
+            //colapsada = !colapsada;
+        }
+
+
         //**************************** DEJAR COMENTARIO *************************************
         var texto1DejarComentario = document.querySelector('.mt-feedback-rating-message');
         if (texto1DejarComentario) {texto1DejarComentario.textContent = '\u00BFEncontraste la informaci\u00F3n que buscabas en este art\u00EDculo?';}
@@ -49,12 +60,20 @@
 
         //******************PARA METRICAS TOC******************************** 
         var elementNav = document.querySelector(".mt-toc-content");
-        var contenido;
+        var contenido, urlDelSitio;
 
         elementNav.addEventListener("click", function(e){
         if(e.target.tagName === "A" && e.target.parentNode.tagName === "LI"){
         contenido = e.target.textContent;
-        console.log("Click en: " + contenido);}});
+        url = window.location.href;
+        console.log("Click en: " + contenido, + " Url: " + urlDelSitio);
+  
+        gtag('event','clic_tabla_de_contenidos',{
+        'event_category': 'Indice',
+        'event_label': contenido,
+        'event_value': urlDelSitio});  
+        }
+        });
 
         //****************************LISTA RESULTADOS************************************
         if (window.location.href.startsWith("https://osde-prod1.mindtouch.us/Special:Search")) {
@@ -75,7 +94,7 @@
          if (fitroPropietario) {fitroPropietario.style.display = "none";}
          
 
-         var results = document.querySelectorAll("li.result");
+ var results = document.querySelectorAll("li.result");
          results.forEach(function (result) {
             var link = result.querySelector("a.go.result-spacer.mt-tracked-result");
             var moreButton = result.querySelector("button.mt-help-more-content");
@@ -84,6 +103,7 @@
                 result.addEventListener("click", function (event) {
                     if (!moreButton || event.target !== moreButton) {
                         window.location.href = originalUrl;}});}});
+
 
 
      let ubicacion = document.querySelector(".mt-search-filters-option-location");
@@ -126,7 +146,9 @@
              botonToggleInterno.setAttribute('aria-expanded', 'true');
              subUlColapsablesInternos.style.display = 'block';
          });
-     });  
+     });
+
+   
 
     }, 500);}
 
@@ -343,64 +365,74 @@
         let spanResponsive = document.createElement('span');
         labelResponsive.appendChild(spanResponsive);
 
-        let divConsejos = document.createElement('div');
-        divConsejos.classList.add('consejo-busqueda-area');
-        let divInternoConsejos = document.createElement('div');
-        divInternoConsejos.classList.add('elm-content-container');
-        let ulConsejos = document.createElement('ul');
-        ulConsejos.classList.add('navbar-header');
-        let liConsejos = document.createElement('li');
-        liConsejos.classList.add('has-submenu');
-        let aConsejos = document.createElement('a');
-        aConsejos.textContent = 'Tips de b\u00FAsqueda';
-        let ulSubmenu = document.createElement('ul');
-        ulSubmenu.classList.add('consejosDesplegables');
-        let li1 = document.createElement('li');
-        li1.textContent = 'En lugar de frases, us\u00E1 dos o m\u00E1s palabras clave.';
-        let li3 = document.createElement('li');
-        li3.textContent =
-            'Us\u00E1 comillas para buscar frases o palabras exactas.';
-        let li4 = document.createElement('li');
-        li4.textContent =
-            'Una vez que hayas realizado la b\u00FAsqueda, en el margen izquierdo vas a poder filtrar por categor\u00EDa o caracter\u00EDsticas del art\u00EDculo.';
-        let li5 = document.createElement('li');
-        li5.textContent =
-            'Para buscar palabras estando dentro del art\u00EDculo o en la lista de resultados, pod\u00E9s usar CTRL+F.';
-        let li6 = document.createElement('li');
-        let li6Anchor = document.createElement("a");
-        li6Anchor.classList.add('linkBusquedaAvanzada');
-        li6Anchor.href = "https://osde-prod1.mindtouch.us/tutoriales/edicion/opciones_de_busqueda_avanzada";
-        li6Anchor.textContent = 'M\u00E1s tips de b\u00FAsqueda';
-        li6.appendChild(li6Anchor);
-        let contenedorFlecha = document.createElement('div');
-        contenedorFlecha.classList.add('contenedorFlecha');
-        let imgFlecha = document.createElement('img');
-        imgFlecha.classList.add('imgFlecha');
-        imgFlecha.src = '/@api/deki/files/256/downArrowWhite.png';
-        imgFlecha.alt = 'flecha';
-        contenedorFlecha.appendChild(imgFlecha)
-        aConsejos.appendChild(contenedorFlecha);
-        liConsejos.appendChild(aConsejos);
-        ulSubmenu.appendChild(li1);
-        ulSubmenu.appendChild(li3);
-        ulSubmenu.appendChild(li4);
-        ulSubmenu.appendChild(li5);
-        ulSubmenu.appendChild(li6);
-        liConsejos.appendChild(ulSubmenu);
-        ulConsejos.appendChild(liConsejos);
-        divInternoConsejos.appendChild(ulConsejos);
-        divConsejos.appendChild(divInternoConsejos);
-        setTimeout(function () {
-            aConsejos.addEventListener('click', function () {
-                ulSubmenu.classList.toggle('consejosDesplegables');
-                // Cambio la URL de la flecha basado en si el menú está desplegado o no
-                if (ulSubmenu.classList.contains('consejosDesplegables')) {
-                    imgFlecha.src = '/@api/deki/files/256/downArrowWhite.png';
-                } else {
-                    imgFlecha.src = '/@api/deki/files/126/upArrowWhite.png';
-                }
-            });
-        }, 1000);
+    let divConsejos = document.createElement('div');
+    divConsejos.classList.add('consejo-busqueda-area');
+    let divInternoConsejos = document.createElement('div');
+    divInternoConsejos.classList.add('elm-content-container');
+    let ulConsejos = document.createElement('ul');
+    ulConsejos.classList.add('navbar-header');
+    let liConsejos = document.createElement('li');
+    liConsejos.classList.add('has-submenu');
+    let aConsejos = document.createElement('a');
+    aConsejos.textContent = 'Tips de b\u00FAsqueda';
+    let ulSubmenu = document.createElement('ul');
+    ulSubmenu.classList.add('consejosDesplegables');
+    let li1 = document.createElement('li');
+    li1.textContent = 'En lugar de frases, us\u00E1 dos o m\u00E1s palabras clave.';
+    let li3 = document.createElement('li');
+    li3.textContent =
+        'Us\u00E1 comillas para buscar frases o palabras exactas.';
+    let li4 = document.createElement('li');
+    li4.textContent =
+        'Una vez que hayas realizado la b\u00FAsqueda, en el margen izquierdo vas a poder filtrar por categor\u00EDa o caracter\u00EDsticas del art\u00EDculo.';
+    let li5 = document.createElement('li');
+    li5.textContent =
+        'Para buscar palabras estando dentro del art\u00EDculo o en la lista de resultados, pod\u00E9s usar CTRL+F.';
+    let li6 = document.createElement('li');
+    let li6Anchor = document.createElement("a");
+    li6Anchor.classList.add('linkBusquedaAvanzada');
+    li6Anchor.href = "https://osde-prod1.mindtouch.us/tutoriales/edicion/opciones_de_busqueda_avanzada";
+    li6Anchor.textContent = 'M\u00E1s tips de b\u00FAsqueda';
+    li6.appendChild(li6Anchor);
+    let contenedorFlecha = document.createElement('div');
+    contenedorFlecha.classList.add('contenedorFlecha');
+    let imgFlecha = document.createElement('img');
+    imgFlecha.classList.add('imgFlecha');
+    imgFlecha.src = '/@api/deki/files/256/downArrowWhite.png';
+    imgFlecha.alt = 'flecha';
+    contenedorFlecha.appendChild(imgFlecha)
+    aConsejos.appendChild(contenedorFlecha);
+    liConsejos.appendChild(aConsejos);
+    ulSubmenu.appendChild(li1);
+    ulSubmenu.appendChild(li3);
+    ulSubmenu.appendChild(li4);
+    ulSubmenu.appendChild(li5);
+    ulSubmenu.appendChild(li6);
+    liConsejos.appendChild(ulSubmenu);
+    ulConsejos.appendChild(liConsejos);
+    divInternoConsejos.appendChild(ulConsejos);
+    divConsejos.appendChild(divInternoConsejos);
+    setTimeout(function () {
+        aConsejos.addEventListener('click', function () {
+            ulSubmenu.classList.toggle('consejosDesplegables'); 
+  // Cambio la URL de la flecha basado en si el menú está desplegado o no
+    if (ulSubmenu.classList.contains('consejosDesplegables')) {
+           // flecha.src = '/@api/deki/files/126/upArrowWhite.png';
+           imgFlecha.src = '/@api/deki/files/256/downArrowWhite.png';
+        } else {
+           // flecha.src = '/@api/deki/files/256/downArrowWhite.png';
+           imgFlecha.src = '/@api/deki/files/126/upArrowWhite.png';
+        }        
+        });
+    }, 1000);
+  
+
+        // function abrirCorreo() {
+        // var destinatario = "albertoranno@gmail.com";
+        // var asunto = "Comentarios";
+        // var cuerpo = "Lo que quisiera comentar es lo siguiente:";
+        // var mailtoLink = "mailto:" + destinatario + "?subject=" + encodeURIComponent(asunto) + "&amp;body=" + encodeURIComponent(cuerpo);
+        // window.location.href = mailtoLink;}
 
         let listItemComercial = document.createElement('li');
         listItemComercial.classList.add('has-submenu', 'mt-style-conditional', 'style-wrap');
