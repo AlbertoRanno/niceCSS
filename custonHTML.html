@@ -24,17 +24,6 @@
 
     document.addEventListener('DOMContentLoaded', function () {
 
-        //********************************** TOC ********************************************
-        let toc = document.getElementById('mt-toc-container');
-        let colapsada = toc.getAttribute('data-collapsed') === 'true';
-        if (colapsada) {
-            let tocContenido = toc.querySelector('.mt-toc-content');
-            toc.setAttribute('data-collapsed', colapsada ? 'false' : 'true');
-            tocContenido.style.maxHeight = colapsada ? tocContenido.scrollHeight + 'px' : '0px';
-            //colapsada = !colapsada;
-        }
-
-
         //**************************** DEJAR COMENTARIO *************************************
         var texto1DejarComentario = document.querySelector('.mt-feedback-rating-message');
         if (texto1DejarComentario) {texto1DejarComentario.textContent = '\u00BFEncontraste la informaci\u00F3n que buscabas en este art\u00EDculo?';}
