@@ -603,7 +603,7 @@ td {
 .warningRegistration,
 .warningChannels,
 .warningImportant {
-	padding: 8px 10px 8px 50px;
+	padding: 8px 10px;
 	color: var(--primary-black);
 	font-family: var(--font-family-primary);
 	font-size: 16px;
@@ -620,6 +620,7 @@ td {
 }
 
 .warningImportant {
+    padding-left: 50px;
 	background-color: var(--error-background);
 	border-color: var(--error);
 	position: relative;
