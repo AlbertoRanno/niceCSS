@@ -280,6 +280,27 @@ p a {
 
 .page-mode-editor .elm-header-logo-menu {
 	position: relative;
+	top:-23px;
+}
+@media (min-width: 18.75em) {
+	.page-mode-editor .elm-header-logo-menu {
+		top:-36px;
+	}
+}
+@media(min-width: 37.5em){
+	.page-mode-editor .elm-header-logo-menu {
+		top:-34px;
+	}
+}
+@media(min-width: 68.5em){
+	.page-mode-editor .elm-header-logo-menu {
+		top:-23px;
+	}
+}
+@media(min-width: 80em){
+	.page-mode-editor .elm-header-logo-menu {
+		top:-23px;
+	}
 }
 
 .elm-header-logo-menu ul {
@@ -479,6 +500,11 @@ p a {
 	.mt-editor-default .elm-header-logo-container,
 	.mt-editor-default .elm-header-logo-menu {
 		height: 107px;
+	}
+}
+@media (min-width: 80em){
+	.page-mode-editor .elm-header-logo-container{
+		max-width: 100%
 	}
 }
 
@@ -1125,7 +1151,7 @@ body[class*="pagenotfound"] pre.script:before {
 
 @media (min-width: 18.75em) {
 	body {
-		margin-top: -24px !important;
+		margin-top: 36px !important;
 	}
 	.consejo-busqueda-area .navbar-header .has-submenu {
 		position: inherit;
@@ -1666,7 +1692,6 @@ div.meta > div.url {
 	display: none;
 }
 
-/* Tablas dentro de colapsables - dinámicas */
 .EXPAND_COLLAPSE table {
     width: auto !important;
     table-layout: auto !important;
