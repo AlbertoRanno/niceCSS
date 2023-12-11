@@ -1654,8 +1654,8 @@ div.meta > div.url {
 	display:none !important;
 }
 
-/* Iconos puestos CAT CAP CGD */
-.iconosPuestos{
+/* Iconos */
+.iconosPuestos, .iconosPequenos, .iconosPequenos img {
 	width: 14px ;
 	height: 14px ;
 	margin-right: 6px;
@@ -1676,3 +1676,52 @@ div.meta > div.url {
 .EXPAND_COLLAPSE td {
     width: auto !important;
 }
+
+ #usuarioActivoID, #usuarioActivoEmail, #googleTagManager {
+            display: none;
+            width: 0px;
+            height: 0px;
+        }
+
+ /* Estilo para el Menú colapsado del índice */
+        .contenedorFlechaIndice {
+            margin-left: 5px;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        .imgFlechaIndice {
+            width: 10px;
+            height: 10px;
+        }
+
+        /* Oculta los OL que tienen otros OL dentro */
+        .mt-toc-content ol>li>ol {
+            display: none;
+        }
+
+        /* Muestra los OL internos cuando tienen la clase 'active' */
+        .mt-toc-content ol.active>li>ol {
+            display: block;
+        }
+
+
+		/* IFRAMEs Pruebas */
+		:root {
+            --iframe-context: 0;
+        }
+
+        body {
+            --iframe-context: 1;
+        }
+
+        iframe {
+            --iframe-context: 0;
+        }
+
+        .columbia-page-main,
+        .mt-content-container,
+        #title {
+            margin-top: var(--iframe-context, 0) !important;
+            padding-top: var(--iframe-context, 0) !important;
+        }
