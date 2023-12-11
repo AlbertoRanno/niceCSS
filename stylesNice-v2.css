@@ -1730,3 +1730,23 @@ div.meta > div.url {
         .mt-toc-content ol.active>li>ol {
             display: block;
         }
+
+		/* IFRAMEs Pruebas */
+		:root {
+            --iframe-context: 0;
+        }
+
+        body {
+            --iframe-context: 1;
+        }
+
+        iframe {
+            --iframe-context: 0;
+        }
+
+        .columbia-page-main,
+        .mt-content-container,
+        #title {
+            margin-top: var(--iframe-context, 0) !important;
+            padding-top: var(--iframe-context, 0) !important;
+        }
