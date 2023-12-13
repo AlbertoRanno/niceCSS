@@ -150,7 +150,7 @@ li {
 	font-size: 14px;
 	& p {
 		margin: 0;
-		line-height: 1.35em;
+		line-height: inherit;
 	}
 }
 
@@ -594,7 +594,8 @@ p a {
 	border-bottom: 6px solid var(--primary-black);
 	position: absolute;
 	top: 9px;
-	right: 5px;
+	/*right: 5px;*/
+	margin-left: 5px;
 }
 .EXPAND_COLLAPSE.close dt:after {
 	border-top: 6px solid var(--primary-black);
@@ -995,10 +996,9 @@ input[type="submit"].ui-button-primary {
 .contenidosRegiones .collapse-buttons {
 	display: flex;
 }
-.contenidosRegiones button {
+.contenidosRegiones button,
+.contenidosRegiones button:hover {
 	border: 2px solid var(--primary-blue);
-	background: var(--white);
-	color: var(--primary-blue);
 	font-family: var(--font-family-primary);
 	font-size: 16px;
 	font-weight: 700;
@@ -1006,7 +1006,15 @@ input[type="submit"].ui-button-primary {
 	border-radius: 0;
 	padding: 8px 16px;
 	border-right: 0;
+	background: var(--background-light-blue);
+	color: var(--medium-gray);
 	box-shadow: none !important;
+	cursor: default;
+	pointer-events: none;
+}
+#editform .contenidosRegiones button,
+#editform .contenidosRegiones button:hover{
+	pointer-events: inherit;
 }
 .contenidosRegiones button:first-child {
 	border-radius: 16px 0 0 0;
@@ -1015,29 +1023,30 @@ input[type="submit"].ui-button-primary {
 	border-radius: 0 16px 0 0;
 	border-right: 2px solid var(--primary-blue);
 }
-.contenidosRegiones button:hover {
+
+
+/* Para distinguir los botones que van a quedar SIN contenido */
+.contenidosRegiones button:has(span.hasContent) {
+	background: var(--white);
+	color: var(--primary-blue);
+	border: 2px solid var(--primary-blue);
+	border-right: 0;
+	cursor:pointer;
+	pointer-events: inherit;
+}
+.contenidosRegiones button:has(span.hasContent):last-of-type {
+	border-right: 2px solid var(--primary-blue);
+}
+.contenidosRegiones button:has(span.hasContent:hover) {
 	background-color: var(--primary-blue);
 	color: var(--white);
 	box-shadow: none;
 }
-.contenidosRegiones button:focus {
-	box-shadow: none;
+.contenidosRegiones button:has(span.hasContent:hover) span.hasContent {
+	color: var(--white);
 }
-
-/* Oculta los contenidos - Pasado a template */
-/* .contenidosRegiones .collapse {
-	display: none;
-} */
-
-/* Muestra los contenidos cuando están activos - Pasado a template */
-/* .contenidosRegiones .collapse.active {
-	display: block;
-} */
-
-/* Para distinguir los botones que van a quedar SIN contenido */
-.contenidosRegiones span.noContent button {
-	background: var(--background-light-blue);
-	color: var(--medium-gray);
+.contenidosRegiones button:has(span.hasContent):focus {
+	box-shadow: none;
 }
 .contenidosRegiones .contecontenidosLocalidades > div {
 	padding: 16px 0;
@@ -1705,7 +1714,14 @@ div.meta > div.url {
 .iconosPequenos,
 .iconosPequenos img {
 	width: 14px;
-	height: 14px;
+	height: 14px;	
+}
+.iconosPequenos img{
+	position: relative;
+	top:2px;
+}
+
+.iconosPuestos {
 	margin-right: 6px;
 }
 
@@ -1772,3 +1788,18 @@ div.meta > div.url {
 	padding: 0;
 }
 
+.mt-feedback-rating-controls {
+        background-color: var(--background-light-blue-2); /*#8695f2*/
+        border-radius: 5px;
+        border: 1px solid var(--primary-blue);
+        padding: 8px 1.5em;
+
+}
+
+.mt-feedback-rating-controls .ui-button-icon {
+    color: var(--primary-black);
+}
+
+.mt-feedback-form fieldset{
+	background: var(--background-light-blue-2);
+}
