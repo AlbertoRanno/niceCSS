@@ -133,7 +133,7 @@
  });
 
  function envioDeMetricasGTM(contenido, urlDelSitio, usuarioActivoID){
-   if(usuarioActivoID){
+   if(usuarioActivoID && contenido){
       console.log("ID: ", usuarioActivoID.textContent + " \nClick en: " + contenido + " \nUrl: " + urlDelSitio);
        gtag('event', 'clic_tabla_de_contenidos', {
            'event_category': 'Indice',
@@ -141,9 +141,6 @@
            'event_value': urlDelSitio,
            'userId': usuarioActivoID.textContent 
        });
-    }
-    else{
-       console.log("Esta pagina no utiliza el template basico...");
     }
  }
         //****************************LISTA RESULTADOS************************************
