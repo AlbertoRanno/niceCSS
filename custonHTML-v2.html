@@ -72,7 +72,7 @@
             contenedorTitulo.appendChild(contenedorFlechaIndice);
             contenedorFlechaIndice.appendChild(imgFlechaIndice);
             contenedorFlechaIndice.addEventListener('click', function () {
-                let isActive = olSiguienteAlLiActual.classList.toggle('active');
+                let isActive = olSiguienteAlLiActual.classList.toggle('secondary-ol');
                 imgFlechaIndice.src = isActive ? '/@api/deki/files/101/upArrowBlue.png' :
                     '/@api/deki/files/22/downArrowBlue.png.png';
                 olSiguienteAlLiActual.style.display = isActive ? 'block' : 'none';
@@ -119,26 +119,33 @@
  var contenido, urlDelSitio, usuarioActivoID; 
 
  elementNav.addEventListener("click", function (e) {
-     if (e.target.tagName === "A" && e.target.parentNode.tagName === "LI") {
-         contenido = e.target.textContent;
-         urlDelSitio = window.location.href;                
-         usuarioActivoID = document.getElementById("usuarioActivoID");
+    contenido = e.target.textContent;
+    urlDelSitio = window.location.href;             
+    usuarioActivoID = document.getElementById("usuarioActivoID");
 
-         if(usuarioActivoID){
-            console.log("ID: ", usuarioActivoID.textContent + " \nClick en: " + contenido + " \nUrl: " + urlDelSitio);
-
-            gtag('event', 'clic_tabla_de_contenidos', {
-                'event_category': 'Indice',
-                'event_label': contenido,
-                'event_value': urlDelSitio,
-                'userId': usuarioActivoID.textContent 
-            });
-         }
-         else{
-            console.log("Esta pagina no utiliza el template basico...");
-         }            
-     }
+    if (e.target.tagName === "A" && e.target.parentNode.tagName === "LI") {
+      if(!e.target.closest(".secondary-ol")){
+        envioDeMetricasGTM(contenido, urlDelSitio, usuarioActivoID);            
+       }            
+    } else if(e.target.closest(".titulo-collapsible-section")){    
+        envioDeMetricasGTM(contenido, urlDelSitio, usuarioActivoID);              
+    }
  });
+
+ function envioDeMetricasGTM(contenido, urlDelSitio, usuarioActivoID){
+   if(usuarioActivoID){
+      console.log("ID: ", usuarioActivoID.textContent + " \nClick en: " + contenido + " \nUrl: " + urlDelSitio);
+       gtag('event', 'clic_tabla_de_contenidos', {
+           'event_category': 'Indice',
+           'event_label': contenido,
+           'event_value': urlDelSitio,
+           'userId': usuarioActivoID.textContent 
+       });
+    }
+    else{
+       console.log("Esta pagina no utiliza el template basico...");
+    }
+ }
         //****************************LISTA RESULTADOS************************************
         if (window.location.href.startsWith("https://osde-prod2.mindtouch.us/Special:Search")) {
             setTimeout(function () {
