@@ -1,14 +1,3 @@
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-K7R0BP1SJQ"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    gtag('config', 'G-K7R0BP1SJQ');
-</script>
 <!-- Google Tag Manager -->
 <script>
     (function (w, d, s, l, i) {
@@ -117,20 +106,18 @@
 
         //******************METRICAS TABLA DE CONTENIDO******************************** 
         var elementNav = document.querySelector(".mt-toc-content");
-        var contenido, urlDelSitio, usuarioActivoID, usuarioActivoGrupo;
+        var contenido, urlDelSitio, usuarioActivo, usuarioActivoID, usuarioActivoGrupo;
 
         elementNav.addEventListener("click", function (e) {
+            usuarioActivo = document.getElementById("usuarioActivoID");
+            
             contenido = e.target.textContent;
             urlDelSitio = window.location.href;
-            usuarioActivoID = document.getElementById("usuarioActivoID");
-
-            if (e.target.tagName === "A" && e.target.parentNode.tagName === "LI") {
-                if (!e.target.closest(".secondary-ol")) {
-                    envioDeMetricasGTM(contenido, urlDelSitio, usuarioActivoID);
-                }
-            } else if (e.target.closest(".titulo-collapsible-section")) {
-                envioDeMetricasGTM(contenido, urlDelSitio, usuarioActivoID);
-            }
+            usuarioActivoID = usuarioActivo.textContent;
+            usuarioActivoGrupo = obtenerNombreDeGrupo();
+           
+            console.log("ID: ", usuarioActivoID + " \nClick en: " + contenido + " \nUrl: " +
+                urlDelSitio, " \nGrupo: " + usuarioActivoGrupo);
         });
 
         function obtenerNombreDeGrupo() {
@@ -140,24 +127,6 @@
             if (colonIndex !== -1) {
                 var jsonName = divContent.substring(1, colonIndex).trim();
                 return jsonName;
-            }
-        }
-
-        function envioDeMetricasGTM(contenido, urlDelSitio, usuarioActivoID) {
-            usuarioActivoGrupo = obtenerNombreDeGrupo();
-            if (usuarioActivoID) {
-                console.log("ID: ", usuarioActivoID.textContent + " \nClick en: " + contenido + " \nUrl: " +
-                    urlDelSitio, " \nGrupo: " + usuarioActivoGrupo);
-
-                gtag('event', 'clic_tabla_de_contenidos', {
-                    'event_category': 'Indice',
-                    'event_label': contenido,
-                    'event_value': urlDelSitio,
-                    'userId': usuarioActivoID.textContent,
-                    'userGroup': usuarioActivoGrupo
-                });
-            } else {
-                console.log("Esta pagina no utiliza el template basico...");
             }
         }
         //****************************LISTA RESULTADOS************************************
