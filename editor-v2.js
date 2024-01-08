@@ -8,8 +8,13 @@ CKEDITOR.editorConfig = function(config) {
     config.stylesSet.push({ name : 'iconosPequenos', wrap:false, attributes : { 'class' : 'iconosPequenos'} });
     config.stylesSet.push({ name : 'definitionBox', element : 'p', wrap:true, attributes : { 'class' : 'definitionBox'} });
     config.stylesSet.push({ name : 'hasContent', wrap:false, attributes : { 'class' : 'hasContent'} });
+    config.stylesSet.push({ name : 'emptyRegions', wrap: false, attributes: { 'class': 'emptyRegions'}});
 
     config.stylesSet.push({ name : '2 Columnas', element : 'div', wrap:true, attributes : { 'class' : 'generateColumns twoColumns' } });
     config.stylesSet.push({ name : '3 Columnas', element : 'div', wrap:true, attributes : { 'class' : 'generateColumns threeColumns' } });
     config.stylesSet.push({ name : '4 Columnas', element : 'div', wrap:true, attributes : { 'class' : 'generateColumns fourColumns' } });
 };
+
+
+
+       
