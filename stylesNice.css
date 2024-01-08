@@ -871,17 +871,6 @@ thead {
                          en CSS de la NavBar */
 }
 
-.emptyRegions button {
-	border-radius: 0 !important;
-	padding: 8px 16px;
-	background: var(--background-light-blue);
-	color: var(--medium-gray);
-	box-shadow: none !important;
-	cursor: default;
-	pointer-events: none;
-	border-bottom: 0 !important;
-}
-
 /* Accordion */
 .accordion {
 	margin-bottom: 20px;
@@ -2067,4 +2056,15 @@ div.meta>div.url {
 .mt-responsive-table.diagnostico td:nth-child(2),
 .mt-responsive-table.diagnostico th:nth-child(2) {
     width: 50% !important;
+}
+
+.emptyRegions button {
+	border-radius: 0 !important;
+	padding: 8px 16px;
+	background: var(--background-light-blue);
+	color: var(--medium-gray);
+	box-shadow: none !important;
+	cursor: default;
+	pointer-events: none;
+	border-bottom: 0 !important;
 }
