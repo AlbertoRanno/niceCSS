@@ -49,7 +49,11 @@
 	--definition: #4a88cc;
 	--definition-background: #d8e4f1;
 
+<<<<<<< HEAD
         --enlaceVisitadoColor: #800080;
+=======
+	--enlaceVisitadoColor: #800080;
+>>>>>>> dc79df1ec92f92268b54cd43765fe2bdca0ca7d4
 
 	/* Font family */
 	--font-family-primary: "Nunito", sans-serif;
@@ -1070,7 +1074,18 @@ input[type="submit"].ui-button-primary {
 	box-shadow: none !important;
 }
 
+<<<<<<< HEAD
 
+=======
+.navBarLateral button:first-child {
+	border-radius: 16px 16px 0 0;
+}
+
+.navBarLateral button:last-of-type {
+	border-radius: 0 0 16px 16px;
+	border-bottom: 2px solid var(--primary-blue);
+}
+>>>>>>> dc79df1ec92f92268b54cd43765fe2bdca0ca7d4
 
 .navBarLateral button:hover {
 	background-color: var(--primary-blue);
@@ -2038,26 +2053,19 @@ div.meta>div.url {
 
 .mt-responsive-table.medicamentos td,
 .mt-responsive-table.diagnostico td {
-    border: 1px solid var(--medium-gray);  
-}
-
-.mt-responsive-table.resoluciones td {
-    border-top: 1px solid var(--medium-gray);
-    border-bottom: 1px solid var(--medium-gray);
-    border-left: none;
-    border-right: none;
+	border: 1px solid var(--medium-gray);
 }
 
 .mt-responsive-table.diagnostico td:nth-child(1),
 .mt-responsive-table.diagnostico th:nth-child(1),
 .mt-responsive-table.diagnostico td:nth-child(3),
 .mt-responsive-table.diagnostico th:nth-child(3) {
-    width: 25% !important;
+	width: 25% !important;
 }
 
 .mt-responsive-table.diagnostico td:nth-child(2),
 .mt-responsive-table.diagnostico th:nth-child(2) {
-    width: 50% !important;
+	width: 50% !important;
 }
 
 
