@@ -49,11 +49,7 @@
 	--definition: #4a88cc;
 	--definition-background: #d8e4f1;
 
-<<<<<<< HEAD
-        --enlaceVisitadoColor: #800080;
-=======
 	--enlaceVisitadoColor: #800080;
->>>>>>> dc79df1ec92f92268b54cd43765fe2bdca0ca7d4
 
 	/* Font family */
 	--font-family-primary: "Nunito", sans-serif;
@@ -870,10 +866,10 @@ thead {
 	padding: 20px;
 }
 
-.particularidades .hidden {
-	/* display: none; 
-                         en CSS de la NavBar */
+.particularidades ul:not(:has(yourChildElements)){
+	display: none;
 }
+
 
 
 
@@ -1054,44 +1050,7 @@ input[type="submit"].ui-button-primary {
 	margin-bottom: 0;
 }
 
-/* Particularidades */
-.navBarLateral {
-	margin-right: 16px;
-}
 
-.navBarLateral button {
-	width: 100%;
-	border: 2px solid var(--primary-blue);
-	background: var(--white);
-	color: var(--primary-blue);
-	font-family: var(--font-family-primary);
-	font-size: 16px;
-	font-weight: 700;
-	line-height: 22px;
-	border-radius: 0;
-	border-bottom: 0;
-	padding: 12px 16px;
-	box-shadow: none !important;
-}
-
-<<<<<<< HEAD
-
-=======
-.navBarLateral button:first-child {
-	border-radius: 16px 16px 0 0;
-}
-
-.navBarLateral button:last-of-type {
-	border-radius: 0 0 16px 16px;
-	border-bottom: 2px solid var(--primary-blue);
-}
->>>>>>> dc79df1ec92f92268b54cd43765fe2bdca0ca7d4
-
-.navBarLateral button:hover {
-	background-color: var(--primary-blue);
-	color: var(--white);
-	box-shadow: none;
-}
 
 .contenidosRegiones {
 	width: 100%;
@@ -2069,27 +2028,55 @@ div.meta>div.url {
 }
 
 
-.emptyRegions button {
-        border-radius: 0 !important;
-        padding: 8px 16px;
-        background: var(--background-light-blue);
-        color: var(--medium-gray);
-        box-shadow: none !important;
-        cursor: default;
-        pointer-events: none;
-        border-bottom: 0 !important;
+
+
+/* Particularidades */
+.navBarLateral {
+	margin-right: 16px;
+	border: 2px solid var(--primary-blue);
+	border-radius: 8px;
+	overflow: hidden;
+	align-self: flex-start;
 }
 
+.navBarLateral button {
+	width: 100%;
+	background: var(--white);
+	color: var(--primary-blue);
+	font-family: var(--font-family-primary);
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 22px;
+	border-radius: 0;
+	border-bottom: 0;
+	border-left: 0;
+	border-right: 0;
+	border-top: 2px solid var(--primary-blue);
+	padding: 12px 16px;
+	box-shadow: none !important;
+}
+.navBarLateral button:hover {
+	background-color: var(--primary-blue);
+	color: var(--white);
+	box-shadow: none;
+}
+.navBarLateral button:first-child{
+	border: 0 !important;
+}
 .navBarLateral > .emptyRegions{
 	display:block;
 }
-.navBarLateral .emptyRegions:last-of-type button,
-.navBarLateral > button:last-child {
-	border-bottom: 2px solid var(--primary-blue) !important;
-	border-radius: 0 0 8px 8px !important;
+.navBarLateral > .emptyRegions:last-of-type{
+	border-top: 2px solid var(--primary-blue);
 }
-
-.navBarLateral .emptyRegions:first-child button,
-.navBarLateral > button:first-child {
-	border-radius: 8px 8px 0 0 !important;
+.navBarLateral > .emptyRegions:first-child{
+	border-top: 0 !important;
+}
+.navBarLateral > .emptyRegions button {
+	padding: 8px 16px;
+	background: var(--background-light-blue);
+	color: var(--medium-gray);
+	box-shadow: none !important;
+	cursor: default;
+	pointer-events: none;
 }
