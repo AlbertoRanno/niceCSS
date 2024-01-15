@@ -19,18 +19,18 @@
 
 <script>
     //****************************COLAPSABLES****************************
-function alternarCollapse(id) {
-    const elemento = document.getElementById(id);
-    if (elemento) {
-        const subregiones = elemento.parentElement.querySelectorAll('.collapse');
-        subregiones.forEach((subregion) => {
-            if (subregion !== elemento) {
-                subregion.classList.remove('active');
-            }
-        });
-        elemento.classList.toggle('active');
+    function alternarCollapse(id) {
+        const elemento = document.getElementById(id);
+        if (elemento) {
+            const subregiones = elemento.parentElement.querySelectorAll('.collapse');
+            subregiones.forEach((subregion) => {
+                if (subregion !== elemento) {
+                    subregion.classList.remove('active');
+                }
+            });
+            elemento.classList.toggle('active');
+        }
     }
-} 
 
     function toggleAccordion(collapseId) {
         var accordionBody = document.getElementById(collapseId);
@@ -47,11 +47,8 @@ function alternarCollapse(id) {
         });
     });
 
-<<<<<<< HEAD
-    document.addEventListener('DOMContentLoaded', function () {    
-=======
     document.addEventListener('DOMContentLoaded', function () {
->>>>>>> dc79df1ec92f92268b54cd43765fe2bdca0ca7d4
+
 
         // ************************************* Colapsar subniveles índice *************************************
         let liPrincipalesConOlInternos = document.querySelectorAll(
@@ -72,8 +69,10 @@ function alternarCollapse(id) {
             contenedorTitulo.appendChild(contenedorFlechaIndice);
             contenedorFlechaIndice.appendChild(imgFlechaIndice);
             contenedorFlechaIndice.addEventListener('click', function () {
-                let isActive = olSiguienteAlLiActual.classList.toggle('secondary-ol');
-                imgFlechaIndice.src = isActive ? '/@api/deki/files/101/upArrowBlue.png' :
+                let isActive = olSiguienteAlLiActual.classList.toggle(
+                    'secondary-ol');
+                imgFlechaIndice.src = isActive ?
+                    '/@api/deki/files/101/upArrowBlue.png' :
                     '/@api/deki/files/22/downArrowBlue.png.png';
                 olSiguienteAlLiActual.style.display = isActive ? 'block' : 'none';
             });
@@ -114,22 +113,18 @@ function alternarCollapse(id) {
             searchField.setAttribute('title', 'Campo de b\u00FAsqueda del sitio');
         }
 
-<<<<<<< HEAD
-          //******************METRICAS TABLA DE CONTENIDO******************************** 
-=======
         //******************METRICAS TABLA DE CONTENIDO******************************** 
->>>>>>> dc79df1ec92f92268b54cd43765fe2bdca0ca7d4
         var elementNav = document.querySelector(".mt-toc-content");
         var contenido, urlDelSitio, usuarioActivo, usuarioActivoID, usuarioActivoGrupo;
 
         elementNav.addEventListener("click", function (e) {
             usuarioActivo = document.getElementById("usuarioActivoID");
-            
+
             contenido = e.target.textContent;
             urlDelSitio = window.location.href;
             usuarioActivoID = usuarioActivo.textContent;
             usuarioActivoGrupo = obtenerNombreDeGrupo();
-           
+
             console.log("ID: ", usuarioActivoID + " \nClick en: " + contenido + " \nUrl: " +
                 urlDelSitio, " \nGrupo: " + usuarioActivoGrupo);
         });
@@ -137,10 +132,7 @@ function alternarCollapse(id) {
         function obtenerNombreDeGrupo() {
             var divContent = document.getElementById("usuarioActivoGrupo").textContent;
             var colonIndex = divContent.indexOf(':');
-<<<<<<< HEAD
             console.log("divContent : " + divContent + " colonIndex : " + colonIndex);
-=======
->>>>>>> dc79df1ec92f92268b54cd43765fe2bdca0ca7d4
 
             if (colonIndex !== -1) {
                 var jsonName = divContent.substring(1, colonIndex).trim();
@@ -178,8 +170,10 @@ function alternarCollapse(id) {
 
                 var results = document.querySelectorAll("li.result");
                 results.forEach(function (result) {
-                    var link = result.querySelector("a.go.result-spacer.mt-tracked-result");
-                    var moreButton = result.querySelector("button.mt-help-more-content");
+                    var link = result.querySelector(
+                        "a.go.result-spacer.mt-tracked-result");
+                    var moreButton = result.querySelector(
+                        "button.mt-help-more-content");
                     if (link) {
                         var originalUrl = link.getAttribute("href");
                         result.addEventListener("click", function (event) {
@@ -190,12 +184,14 @@ function alternarCollapse(id) {
                     }
                 });
 
-                let ubicacion = document.querySelector(".mt-search-filters-option-location");
+                let ubicacion = document.querySelector(
+                    ".mt-search-filters-option-location");
                 if (ubicacion) {
                     let textoEnNodo = ubicacion.childNodes[0];
                     textoEnNodo.nodeValue = "Categor\u00EDas";
                 }
-                let clasificacion = document.querySelector(".mt-search-filters-option-classifications");
+                let clasificacion = document.querySelector(
+                    ".mt-search-filters-option-classifications");
                 if (clasificacion) {
                     let textoEnNodo = clasificacion.childNodes[0];
                     textoEnNodo.nodeValue = "Caracter\u00EDsticas";
@@ -211,7 +207,8 @@ function alternarCollapse(id) {
                         '.mt-search-filters-sub-options');
 
                     botonToggle.addEventListener('click', () => {
-                        if (ulColapsablesInternos.style.display === 'none') {
+                        if (ulColapsablesInternos.style.display ===
+                            'none') {
                             ulColapsablesInternos.style.display = 'block';
                         } else {
                             ulColapsablesInternos.style.display = 'none';
@@ -307,7 +304,8 @@ function alternarCollapse(id) {
                 });
                 link3.appendChild(iconoCopiarlink3);
                 var link4 = document.createElement("li");
-                link4.className = "linkMasBotonCopiarPortapapeles linkMasBotonCopiarPortapapelesLink4";
+                link4.className =
+                    "linkMasBotonCopiarPortapapeles linkMasBotonCopiarPortapapelesLink4";
                 var link4P = document.createElement("p");
                 link4P.innerHTML =
                     "Para sugerir un nuevo art\u00EDculo, escribinos, desde tu cuenta de email, a contenidos\u0040osde.com.ar";
@@ -611,7 +609,8 @@ function alternarCollapse(id) {
             let li6 = document.createElement('li');
             let li6Anchor = document.createElement("a");
             li6Anchor.classList.add('linkBusquedaAvanzada');
-            li6Anchor.href = "https://osde-prod2.mindtouch.us/tutoriales/edicion/opciones_de_busqueda_avanzada";
+            li6Anchor.href =
+                "https://osde-prod2.mindtouch.us/tutoriales/edicion/opciones_de_busqueda_avanzada";
             li6Anchor.textContent = 'M\u00E1s tips de b\u00FAsqueda';
             li6.appendChild(li6Anchor);
             let contenedorFlecha = document.createElement('div');
@@ -830,7 +829,8 @@ function alternarCollapse(id) {
             ulSubList.appendChild(listItemReintegro);
 
             let listItemAdministracion = document.createElement('li');
-            listItemAdministracion.classList.add('has-submenu', 'mt-style-conditional', 'style-wrap');
+            listItemAdministracion.classList.add('has-submenu', 'mt-style-conditional',
+                'style-wrap');
             let linkAdministracion = document.createElement('a');
             linkAdministracion.href = "/Cobertura";
             linkAdministracion.title = "Administraci\u00F3n";
