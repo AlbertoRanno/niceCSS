@@ -5,6 +5,12 @@
     function alternarCollapse(id) {
         const elemento = document.getElementById(id);
         if (elemento) {
+            const subregiones = elemento.parentElement.querySelectorAll('.collapse');
+            subregiones.forEach((subregion) => {
+                if (subregion !== elemento) {
+                    subregion.classList.remove('active');
+                }
+            });
             elemento.classList.toggle('active');
         }
     }
@@ -92,7 +98,87 @@
 
         //****************************LISTA RESULTADOS************************************
         if (window.location.href.startsWith("https://osde-prod1.mindtouch.us/Special:Search")) {
+
+            document.addEventListener('click', function (event) {
+                if (event.target.tagName === 'A') {
+                    const url = event.target.href;
+                    guardarURLenLocalStorage(url);
+                }
+            });
+            document.addEventListener('contextmenu', function (event) {
+                if (event.target.tagName === 'A') {
+                    const url = event.target.href;
+                    guardarURLenLocalStorage(url);
+                }
+            });
+            //localStorage.clear();            
+            function guardarURLenLocalStorage(url) {
+                const urlsGuardadas = JSON.parse(localStorage.getItem('urlsGuardadas')) || [];
+
+                if (!urlsGuardadas.includes(url)) {
+                    urlsGuardadas.push(url);
+
+                    localStorage.setItem('urlsGuardadas', JSON.stringify(urlsGuardadas));
+
+                    console.log('Nueva URL guardada en el array:', url);
+                    console.log('URLs Guardadas:', urlsGuardadas);
+                } else {
+                    console.log('La URL ya estaba en el array:', url);
+                    console.log('URLs Guardadas:', urlsGuardadas);
+                }
+            }
+            var interval = setInterval(function () {
+                var targetNode = document.getElementById('search-results');
+                if (targetNode) {
+                    //  clearInterval(interval); // Detener la verificación periódica
+                    aplicarCambioDeColor();
+                }
+            }, 1000);
+
+            function aplicarCambioDeColor() {
+                const urlsGuardadas = JSON.parse(localStorage.getItem('urlsGuardadas')) || [];
+                document.querySelectorAll("#search-results li a").forEach(function (link) {
+                    var linkUrl = link.getAttribute("href");
+                    if (urlsGuardadas.includes(linkUrl)) {
+                        link.style.color = "#800080";
+                    }
+                });
+            }
+
+            function handleClick(event) {
+                if (event.target.tagName === 'A') {
+                    const url = event.target.href;
+                    const urlsGuardadas = JSON.parse(localStorage.getItem('urlsGuardadas')) || [];
+                    if (!urlsGuardadas.includes(url)) {
+                        urlsGuardadas.push(url);
+                        localStorage.setItem('urlsGuardadas', JSON.stringify(urlsGuardadas));
+                        console.log('Nueva URL guardada en el array:', url);
+                        console.log('URLs Guardadas:', urlsGuardadas);
+                        aplicarCambioDeColor();
+                    } else {
+                        console.log('La URL ya estaba en el array:', url);
+                        console.log('URLs Guardadas:', urlsGuardadas);
+                    }
+                }
+            }
+            document.addEventListener('click', handleClick);
+            var interval = setInterval(function () {
+                var targetNode = document.getElementById('search-results');
+                if (targetNode) {
+                    clearInterval(interval);
+                    aplicarCambioDeColor();
+                }
+            }, 1000);
+
+            var botonBorrarLocalStorage = document.createElement("button");
+            botonBorrarLocalStorage.innerHTML = "Borrar Historial";
+            botonBorrarLocalStorage.addEventListener("click", function () {
+                localStorage.removeItem('urlsGuardadas');
+                location.reload();
+            });
+
             setTimeout(function () {
+
                 var buscador = document.querySelector('form.mt-search-form-seated');
                 if (buscador) {
                     buscador.style.position = 'sticky';
@@ -573,6 +659,15 @@
             ulSubmenu.appendChild(li6);
             liConsejos.appendChild(ulSubmenu);
             ulConsejos.appendChild(liConsejos);
+
+            if (window.location.href.startsWith("https://osde-prod1.mindtouch.us/Special:Search")) {
+
+                let liBotonBorrarLocalStorage = document.createElement('li');
+                botonBorrarLocalStorage.classList.add('botonBorrarLocalStorage');
+                liBotonBorrarLocalStorage.appendChild(botonBorrarLocalStorage)
+                ulConsejos.appendChild(botonBorrarLocalStorage);
+            }
+
             divInternoConsejos.appendChild(ulConsejos);
             divConsejos.appendChild(divInternoConsejos);
             setTimeout(function () {
