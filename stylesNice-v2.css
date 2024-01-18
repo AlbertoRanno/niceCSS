@@ -652,7 +652,6 @@ p a {
     border-bottom: 1px solid var(--medium-gray);
     display: flex;
     align-items: center;
-
 }
 
 .EXPAND_COLLAPSE dt:after {
@@ -2122,3 +2121,7 @@ div.meta>div.url {
 
 .ui-tooltip {
   background: var(--white); }
+
+.imgHome {
+width: 80px;
+}
