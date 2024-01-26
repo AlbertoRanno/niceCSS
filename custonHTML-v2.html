@@ -19,19 +19,20 @@
 <script src="https://unpkg.com/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
 <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.min.js"></script>
 <script>
+
     //****************************COLAPSABLES****************************
-    function alternarCollapse(id) {
-        const elemento = document.getElementById(id);
-        if (elemento) {
-            const subregiones = elemento.parentElement.querySelectorAll('.collapse');
-            subregiones.forEach((subregion) => {
-                if (subregion !== elemento) {
-                    subregion.classList.remove('active');
-                }
-            });
-            elemento.classList.toggle('active');
-        }
+      function alternarCollapse(id) {
+    const elemento = document.getElementById(id);
+    if (elemento) {
+        const subregiones = elemento.parentElement.querySelectorAll('.collapse');
+        subregiones.forEach((subregion) => {
+            if (subregion !== elemento) {
+                subregion.classList.remove('active');
+            }
+        });
+        elemento.classList.toggle('active');
     }
+}
 
     function toggleAccordion(collapseId) {
         var accordionBody = document.getElementById(collapseId);
@@ -48,7 +49,7 @@
         });
     });
 
-    $(function () {
+ $(function () {
         $('.tool-tip-link').each(function () {
             var className = $(this).attr('class').split(' ')[1];
             var imageSrc = getImageSrc(className);
@@ -67,24 +68,31 @@
                 'CAP': '/@api/deki/files/30/Sub_y_encargado_CAP.png',
             };
 
-            return images[className] || '';
+            return images[className] || ''; 
         }
     });
 
     document.addEventListener('DOMContentLoaded', function () {
-
-        //****************************METRICAS POR AGRUPADOR****************************
-        var selectElement, selectValue;
-        selectElement = document.getElementById("live-tag-article-select");
-        console.log("selectElement: ", selectElement);
-
-        selectedValue = selectElement.options[selectElement.selectedIndex].value;
-        console.log("selectedValue: ", selectedValue);
-
-        if (selectedValue !== "article:topic-category" && selectedValue !== "article:topic-guide") {
-            console.log("Estoy dentro de un articulo...");
-        } else {
-            console.log("Estoy dentro de una categoria o guia...");
+ 
+    //****************************METRICAS POR AGRUPADOR****************************
+        var selectElement, selectedValue, selectElementOwner, selectElementType, propietario, tipo, articleURL;
+        
+        //Controlo que el codigo se ejecute solo si la pagina contiene la seccion de configuracion de pagina
+        if(document.getElementById("live-tag-article-select")){ 
+         selectElement = document.getElementById("live-tag-article-select");
+         selectedValue = selectElement.options[selectElement.selectedIndex].value;
+         
+         //Controlo que obtenga los datos solo si esta a nivel documento/articulo
+         if (selectedValue !== "article:topic-category" && selectedValue !== "article:topic-guide") {
+            selectElementOwner = document.getElementById("live-tag-propietario-select");
+            selectElementType =  document.getElementById("live-tag-tipo-select");
+          
+            propietario = selectElementOwner.options[selectElementOwner.selectedIndex].textContent;
+            tipo = selectElementType.options[selectElementType.selectedIndex].textContent;
+            articleURL = window.location.href;
+            
+            console.log("URL: " + articleURL + " \nPropietario: " + propietario + " \nTipo: " + tipo);
+         }
         }
         // ************************************* Colapsar subniveles índice *************************************
         let liPrincipalesConOlInternos = document.querySelectorAll(
@@ -145,11 +153,11 @@
 
             var imgHome = document.querySelectorAll('img.internal');
 
-            imgHome.forEach(function (imagen, index) {
+imgHome.forEach(function (imagen, index) {
 
-                var imgHomeSucesivas = 'imgHome' + (index + 1);
-                imagen.classList.add(imgHomeSucesivas);
-            });
+    var imgHomeSucesivas = 'imgHome' + (index + 1);
+    imagen.classList.add(imgHomeSucesivas);
+});
 
         }
 
@@ -163,28 +171,28 @@
         //******************METRICAS TABLA DE CONTENIDO******************************** 
         var elementNav = document.querySelector(".mt-toc-content");
         var contenido, urlDelSitio;
-        elementNav.addEventListener("click", function (e) {
 
+        elementNav.addEventListener("click", function (e) {
+           
             contenido = e.target.textContent;
             urlDelSitio = window.location.href;
             obtenerDatosDeUsuario();
-
+           
             console.log("Click en: " + contenido + " \nUrl: " + urlDelSitio);
         });
 
         function obtenerDatosDeUsuario() {
-            var usuarioActivo, usuarioActivoID, usuarioActivoGrupo;
-
-            usuarioActivo = document.getElementById("usuarioActivoID");
-            usuarioActivoID = usuarioActivo.textContent;
-            usuarioActivoGrupo = obtenerNombreDeGrupo();
-
-            console.log("ID de usuario: ", usuarioActivoID + " \n Grupo al que pertenece: " +
-                usuarioActivoGrupo);
+         var usuarioActivo, usuarioActivoID, usuarioActivoGrupo;
+         
+         usuarioActivo = document.getElementById("usuarioActivoID");
+         usuarioActivoID = usuarioActivo.textContent;
+         usuarioActivoGrupo = obtenerNombreDeGrupo();
+         
+         console.log("ID de usuario: ", usuarioActivoID + " \n Grupo al que pertenece: " + usuarioActivoGrupo)        
         }
 
         function obtenerNombreDeGrupo() {
-
+       
             var divContent = document.getElementById("usuarioActivoGrupo").textContent;
             var colonIndex = divContent.indexOf(':');
 
