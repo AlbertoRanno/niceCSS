@@ -48,7 +48,7 @@
         });
     });
 
- $(function () {
+    $(function () {
         $('.tool-tip-link').each(function () {
             var className = $(this).attr('class').split(' ')[1];
             var imageSrc = getImageSrc(className);
@@ -67,12 +67,25 @@
                 'CAP': '/@api/deki/files/30/Sub_y_encargado_CAP.png',
             };
 
-            return images[className] || ''; 
+            return images[className] || '';
         }
     });
 
     document.addEventListener('DOMContentLoaded', function () {
 
+        //****************************METRICAS POR AGRUPADOR****************************
+        var selectElement, selectValue;
+        selectElement = document.getElementById("live-tag-article-select");
+        console.log("selectElement: ", selectElement);
+
+        selectedValue = selectElement.options[selectElement.selectedIndex].value;
+        console.log("selectedValue: ", selectedValue);
+
+        if (selectedValue !== "article:topic-category" && selectedValue !== "article:topic-guide") {
+            console.log("Estoy dentro de un articulo...");
+        } else {
+            console.log("Estoy dentro de una categoria o guia...");
+        }
         // ************************************* Colapsar subniveles índice *************************************
         let liPrincipalesConOlInternos = document.querySelectorAll(
             '#mt-toc-container > nav > ol > li:has(> ol)');
@@ -132,11 +145,11 @@
 
             var imgHome = document.querySelectorAll('img.internal');
 
-imgHome.forEach(function (imagen, index) {
+            imgHome.forEach(function (imagen, index) {
 
-    var imgHomeSucesivas = 'imgHome' + (index + 1);
-    imagen.classList.add(imgHomeSucesivas);
-});
+                var imgHomeSucesivas = 'imgHome' + (index + 1);
+                imagen.classList.add(imgHomeSucesivas);
+            });
 
         }
 
@@ -151,25 +164,27 @@ imgHome.forEach(function (imagen, index) {
         var elementNav = document.querySelector(".mt-toc-content");
         var contenido, urlDelSitio;
         elementNav.addEventListener("click", function (e) {
-           
+
             contenido = e.target.textContent;
             urlDelSitio = window.location.href;
             obtenerDatosDeUsuario();
-           
+
             console.log("Click en: " + contenido + " \nUrl: " + urlDelSitio);
         });
+
         function obtenerDatosDeUsuario() {
-         var usuarioActivo, usuarioActivoID, usuarioActivoGrupo;
-         
-         usuarioActivo = document.getElementById("usuarioActivoID");
-         usuarioActivoID = usuarioActivo.textContent;
-         usuarioActivoGrupo = obtenerNombreDeGrupo();
-         
-         console.log("ID de usuario: ", usuarioActivoID + " \n Grupo al que pertenece: " + usuarioActivoGrupo);
+            var usuarioActivo, usuarioActivoID, usuarioActivoGrupo;
+
+            usuarioActivo = document.getElementById("usuarioActivoID");
+            usuarioActivoID = usuarioActivo.textContent;
+            usuarioActivoGrupo = obtenerNombreDeGrupo();
+
+            console.log("ID de usuario: ", usuarioActivoID + " \n Grupo al que pertenece: " +
+                usuarioActivoGrupo);
         }
 
         function obtenerNombreDeGrupo() {
-       
+
             var divContent = document.getElementById("usuarioActivoGrupo").textContent;
             var colonIndex = divContent.indexOf(':');
 
