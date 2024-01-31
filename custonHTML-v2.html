@@ -19,20 +19,46 @@
 <script src="https://unpkg.com/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
 <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.min.js"></script>
 <script>
-
     //****************************COLAPSABLES****************************
-      function alternarCollapse(id) {
-    const elemento = document.getElementById(id);
-    if (elemento) {
-        const subregiones = elemento.parentElement.querySelectorAll('.collapse');
-        subregiones.forEach((subregion) => {
-            if (subregion !== elemento) {
-                subregion.classList.remove('active');
-            }
-        });
-        elemento.classList.toggle('active');
+
+    let ultimoBotonClickeado = null;
+
+    function alternarCollapse(id) {
+        const elemento = document.getElementById(id);
+        if (elemento) {
+            const subregiones = elemento.parentElement.querySelectorAll('.collapse');
+            subregiones.forEach((subregion) => {
+                if (subregion !== elemento) {
+                    subregion.classList.remove('active');
+                }
+            });
+            elemento.classList.toggle('active');
+
+            const boton = obtenerBotonPorId(id);
+            resaltarBoton(boton);
+        }
     }
-}
+
+    function resaltarBoton(boton) {
+        if (ultimoBotonClickeado) {
+            ultimoBotonClickeado.classList.remove('filialActiva');
+        }
+
+        if (boton) {
+            boton.classList.add('filialActiva');
+            ultimoBotonClickeado = boton;
+        }
+    }
+
+    function obtenerBotonPorId(id) {
+        const botones = document.querySelectorAll('.contenidosRegiones button');
+        for (const boton of botones) {
+            if (boton.getAttribute('onclick') === `alternarCollapse('${id}')`) {
+                return boton;
+            }
+        }
+        return null;
+    }
 
     function toggleAccordion(collapseId) {
         var accordionBody = document.getElementById(collapseId);
@@ -49,7 +75,7 @@
         });
     });
 
- $(function () {
+    $(function () {
         $('.tool-tip-link').each(function () {
             var className = $(this).attr('class').split(' ')[1];
             var imageSrc = getImageSrc(className);
@@ -68,31 +94,31 @@
                 'CAP': '/@api/deki/files/30/Sub_y_encargado_CAP.png',
             };
 
-            return images[className] || ''; 
+            return images[className] || '';
         }
     });
 
     document.addEventListener('DOMContentLoaded', function () {
- 
-    //****************************METRICAS POR AGRUPADOR****************************
+
+        //****************************METRICAS POR AGRUPADOR****************************
         var selectElement, selectedValue, selectElementOwner, selectElementType, propietario, tipo, articleURL;
-        
+
         //Controlo que el codigo se ejecute solo si la pagina contiene la seccion de configuracion de pagina
-        if(document.getElementById("live-tag-article-select")){ 
-         selectElement = document.getElementById("live-tag-article-select");
-         selectedValue = selectElement.options[selectElement.selectedIndex].value;
-         
-         //Controlo que obtenga los datos solo si esta a nivel documento/articulo
-         if (selectedValue !== "article:topic-category" && selectedValue !== "article:topic-guide") {
-            selectElementOwner = document.getElementById("live-tag-propietario-select");
-            selectElementType =  document.getElementById("live-tag-tipo-select");
-          
-            propietario = selectElementOwner.options[selectElementOwner.selectedIndex].textContent;
-            tipo = selectElementType.options[selectElementType.selectedIndex].textContent;
-            articleURL = window.location.href;
-            
-            console.log("URL: " + articleURL + " \nPropietario: " + propietario + " \nTipo: " + tipo);
-         }
+        if (document.getElementById("live-tag-article-select")) {
+            selectElement = document.getElementById("live-tag-article-select");
+            selectedValue = selectElement.options[selectElement.selectedIndex].value;
+
+            //Controlo que obtenga los datos solo si esta a nivel documento/articulo
+            if (selectedValue !== "article:topic-category" && selectedValue !== "article:topic-guide") {
+                selectElementOwner = document.getElementById("live-tag-propietario-select");
+                selectElementType = document.getElementById("live-tag-tipo-select");
+
+                propietario = selectElementOwner.options[selectElementOwner.selectedIndex].textContent;
+                tipo = selectElementType.options[selectElementType.selectedIndex].textContent;
+                articleURL = window.location.href;
+
+                console.log("URL: " + articleURL + " \nPropietario: " + propietario + " \nTipo: " + tipo);
+            }
         }
         // ************************************* Colapsar subniveles índice *************************************
         let liPrincipalesConOlInternos = document.querySelectorAll(
@@ -153,11 +179,11 @@
 
             var imgHome = document.querySelectorAll('img.internal');
 
-imgHome.forEach(function (imagen, index) {
+            imgHome.forEach(function (imagen, index) {
 
-    var imgHomeSucesivas = 'imgHome' + (index + 1);
-    imagen.classList.add(imgHomeSucesivas);
-});
+                var imgHomeSucesivas = 'imgHome' + (index + 1);
+                imagen.classList.add(imgHomeSucesivas);
+            });
 
         }
 
@@ -173,26 +199,27 @@ imgHome.forEach(function (imagen, index) {
         var contenido, urlDelSitio;
 
         elementNav.addEventListener("click", function (e) {
-           
+
             contenido = e.target.textContent;
             urlDelSitio = window.location.href;
             obtenerDatosDeUsuario();
-           
+
             console.log("Click en: " + contenido + " \nUrl: " + urlDelSitio);
         });
 
         function obtenerDatosDeUsuario() {
-         var usuarioActivo, usuarioActivoID, usuarioActivoGrupo;
-         
-         usuarioActivo = document.getElementById("usuarioActivoID");
-         usuarioActivoID = usuarioActivo.textContent;
-         usuarioActivoGrupo = obtenerNombreDeGrupo();
-         
-         console.log("ID de usuario: ", usuarioActivoID + " \n Grupo al que pertenece: " + usuarioActivoGrupo)        
+            var usuarioActivo, usuarioActivoID, usuarioActivoGrupo;
+
+            usuarioActivo = document.getElementById("usuarioActivoID");
+            usuarioActivoID = usuarioActivo.textContent;
+            usuarioActivoGrupo = obtenerNombreDeGrupo();
+
+            console.log("ID de usuario: ", usuarioActivoID + " \n Grupo al que pertenece: " +
+                usuarioActivoGrupo);
         }
 
         function obtenerNombreDeGrupo() {
-       
+
             var divContent = document.getElementById("usuarioActivoGrupo").textContent;
             var colonIndex = divContent.indexOf(':');
 
