@@ -821,12 +821,16 @@
             liConsejos.appendChild(ulSubmenu);
             ulConsejos.appendChild(liConsejos);
 
+            let liRightMenu = document.createElement('li');
+            liRightMenu.classList.add('right-menu');
+            let ulRightMenu = document.createElement('ul');
+           
             if (window.location.href.startsWith("https://osde-prod2.mindtouch.us/Special:Search")) {
 
                 let liBotonBorrarLocalStorage = document.createElement('li');
                 botonBorrarLocalStorage.classList.add('botonBorrarLocalStorage');
                 liBotonBorrarLocalStorage.appendChild(botonBorrarLocalStorage)
-                ulConsejos.appendChild(botonBorrarLocalStorage);
+                ulRightMenu.appendChild(liBotonBorrarLocalStorage);
                 /*} else {
                     let botonIrAListaResultados = document.createElement("button");
                     botonIrAListaResultados.innerHTML = "Lista de Resultados";
@@ -841,7 +845,21 @@
                             "https://osde-prod2.mindtouch.us/Special:Search?type=wiki&query=";
                     });*/
             }
+            else {
 
+                let liLinkListaResultados = document.createElement('li');
+                let aListaResultados = document.createElement("a");
+                aListaResultados.classList.add('linkListaResultados');
+                aListaResultados.textContent = 'Ir a Listado de resultados';
+                aListaResultados.href ="https://osde-prod2.mindtouch.us/Special:Search";
+               
+                liLinkListaResultados.appendChild(aListaResultados)
+                ulRightMenu.appendChild(liLinkListaResultados);
+            }
+            
+            ulConsejos.appendChild(liRightMenu);
+            liRightMenu.appendChild(ulRightMenu);
+           
             divInternoConsejos.appendChild(ulConsejos);
             divConsejos.appendChild(divInternoConsejos);
             setTimeout(function () {
