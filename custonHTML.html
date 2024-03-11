@@ -5,6 +5,7 @@
     //****************************COLAPSABLES Y PARTICULARIDADES****************************
 
     let ultimoBotonClickeado = null;
+    let ultimoBotonExternoClickeado = null;
 
     function alternarCollapse(id) {
         const elemento = document.getElementById(id);
@@ -19,15 +20,17 @@
 
             const boton = obtenerBotonPorId(id);
             resaltarBoton(boton);
+
+            const botonExterno = obtenerBotonExternoPorId(id);
+            resaltarBotonExterno(botonExterno);
         }
     }
 
     function resaltarBoton(boton) {
-        if (ultimoBotonClickeado) {
-            ultimoBotonClickeado.classList.remove('filialActiva');
-        }
-
-        if (boton) {
+        if (boton && !boton.classList.contains('filialActiva')) {
+            if (ultimoBotonClickeado) {
+                ultimoBotonClickeado.classList.remove('filialActiva');
+            }
             boton.classList.add('filialActiva');
             ultimoBotonClickeado = boton;
         }
@@ -38,6 +41,26 @@
         for (const boton of botones) {
             if (boton.getAttribute('onclick') === `alternarCollapse('${id}')`) {
                 return boton;
+            }
+        }
+        return null;
+    }
+
+    function resaltarBotonExterno(botonExterno) {
+        if (botonExterno) {
+            if (ultimoBotonExternoClickeado && ultimoBotonExternoClickeado !== botonExterno) {
+                ultimoBotonExternoClickeado.classList.remove('regionActiva');
+            }
+            botonExterno.classList.add('regionActiva');
+            ultimoBotonExternoClickeado = botonExterno;
+        }
+    }
+
+    function obtenerBotonExternoPorId(id) {
+        const botonesExternos = document.querySelectorAll('.navBarLateral button');
+        for (const botonExterno of botonesExternos) {
+            if (botonExterno.getAttribute('onclick') === `alternarCollapse('${id}')`) {
+                return botonExterno;
             }
         }
         return null;
@@ -59,6 +82,31 @@
     });
 
     document.addEventListener('DOMContentLoaded', function () {
+
+        var linkUsuario = document.querySelector('.mt-user-menu-user a');
+        if (linkUsuario) {
+            let contenedorFlechaUsuario = document.createElement('div');
+            contenedorFlechaUsuario.classList.add('contenedorFlecha');
+            let imgFlechaUsuario = document.createElement('img');
+            imgFlechaUsuario.classList.add('imgFlecha');
+            imgFlechaUsuario.src = '/@api/deki/files/256/downArrowWhite.png';
+            imgFlechaUsuario.alt = 'flecha';
+            contenedorFlechaUsuario.appendChild(imgFlechaUsuario);
+
+            // Reemplazo el nombre/mail del usuario (del <a>) con el nuevo contenido (el contenedor con su img)
+            linkUsuario.innerHTML = '';
+            linkUsuario.appendChild(contenedorFlechaUsuario);
+
+            function cambiarFlecha() {
+                if (imgFlechaUsuario.src.includes('downArrowWhite')) {
+                    imgFlechaUsuario.src = '/@api/deki/files/126/upArrowWhite.png';
+                } else {
+                    imgFlechaUsuario.src = '/@api/deki/files/256/downArrowWhite.png';
+                }
+            }
+
+            linkUsuario.addEventListener('click', cambiarFlecha);
+        }
 
         const contenedoresPath = document.querySelectorAll('.mt-lp-progress-container');
 
@@ -384,16 +432,7 @@
                     filtros.style.position = 'sticky';
                     filtros.style.top = '100px';
                 }
-                var filtroTipoDeArticulo = document.querySelector(
-                    ".mt-search-filters-classification-article");
-                if (filtroTipoDeArticulo) {
-                    filtroTipoDeArticulo.style.display = "none";
-                }
-                var fitroPropietario = document.querySelector(
-                    ".mt-search-filters-classification-propietario");
-                if (fitroPropietario) {
-                    fitroPropietario.style.display = "none";
-                }
+
                 var results = document.querySelectorAll("li.result");
                 results.forEach(function (result) {
                     var link = result.querySelector("a.go.result-spacer.mt-tracked-result");
@@ -883,8 +922,22 @@
             /*********************************** MODIFICAR BARRA DE NAVEGACION ***********************************/
             //SOLO AGREGAR LOS NOMBRES DE LAS CATEGORIAS Y SUS CORRESPONDIENTES GUIAS, TAL CUAL FUERON CREADAS EN SUS RUTAS
 
+            /*Codigos UNICODE para los nombres con tildes:
+            á - \u00E1
+            é - \u00E9
+            í - \u00ED
+            ó - \u00F3
+            ú - \u00FA
+            
+            Á - \u00C1
+            É - \u00C9
+            Í - \u00CD
+            Ó - \u00D3
+            Ú - \u00DA
+            */
+
             //Agregar la nueva categoria al listado, en la ubicacion deseada, mantener el formato: '    "nombre",   ' (la ultima sin ',' )
-            let categorias = ["Comercial", "Cobertura", "Afiliaciones", "Facturaci\u00F3n", "Reintegro",
+            let categorias = ["Comercial", "Cobertura", "Afiliaciones", "Facturaci\u00F3n", "Reintegros",
                 "Prestadores", "Info Aplicaciones"
             ];
 
@@ -928,7 +981,6 @@
                 [
                     "Altas",
                     "Bajas",
-                    "Aplicaciones",
                     "Certificados",
                     "Modificaciones",
                     "Modificaciones del padr\u00F3n",
@@ -940,7 +992,7 @@
                     "Cuenta corriente",
                     "Facturaci\u00F3n"
                 ],
-                //Reintegro
+                //Reintegros
                 [
                     "Reintegros"
                 ],
@@ -953,7 +1005,11 @@
                 ],
                 //Info Aplicaciones
                 [
-                    "Aplicaciones"
+                    "App OSDE",
+                    "Autogesti\u00F3n de empresas",
+                    "Credencial digital",
+                    "Turnos online",
+                    "Web OSDE"
                 ]
 
             ]
