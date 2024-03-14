@@ -201,7 +201,7 @@ p a {
 /* Menú default principal de la app */
 .elm-header-logo-container {
 	padding: 0 !important;
-	height: 40px !important;
+	height: 40px;
 }
 
 .elm-header-logo-container a {
@@ -499,7 +499,7 @@ p a {
 
 	.elm-header-logo-container,
 	.elm-header-logo-menu {
-		height: 58px !important;
+		height: 58px;
 	}
 
 	.elm-header-logo-menu .navbar-header-logo img {
@@ -554,8 +554,7 @@ p a {
 
 	.elm-header-logo-container,
 	.elm-header-logo-menu {
-		height: 63px;
-		/*76*/
+		height: 58px;
 	}
 
 	.elm-header-logo-menu .navbar-header-logo img {
@@ -2173,7 +2172,7 @@ div.meta>div.url {
 .tool-tip-link {
 	background-color: var(--definition-background);
 	cursor: help;
-	padding: 2px;
+	/*padding: 2px;*/
 }
 
 .imgHome1,
@@ -2332,6 +2331,7 @@ button.botonIrAListaResultados:hover {
 
 article.elm-content-container {
 	padding-top: 0px !important;
+	margin-top: 15px !important;
 }
 
 li.mt-sortable-listing {
@@ -2364,4 +2364,8 @@ li.elm-last-modified * {
 .mt-search-filters-classification-tipo-servicios-procedimiento,
 .mt-search-filters-classification-tipo-basico {
 	display: none;
+}
+
+.caracteresOcultos {
+	color: transparent;
 }
