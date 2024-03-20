@@ -554,7 +554,7 @@ p a {
 
 	.elm-header-logo-container,
 	.elm-header-logo-menu {
-		height: 58px;
+		height: 58px;		
 	}
 
 	.elm-header-logo-menu .navbar-header-logo img {
@@ -612,7 +612,9 @@ p a {
 	.elm-header-logo-menu li.has-submenu:hover .submenu {
 		display: grid;
 	}
-
+	.elm-header-logo-menu li.has-submenu:hover:nth-child(1) .submenu {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
 	.elm-header-logo-menu li.has-submenu:hover:nth-child(2) .submenu {
 		grid-template-columns: 1fr 1fr;
 	}
@@ -2331,7 +2333,7 @@ button.botonIrAListaResultados:hover {
 
 article.elm-content-container {
 	padding-top: 0px !important;
-	margin-top: 15px !important;
+        margin-top: 15px !important;
 }
 
 li.mt-sortable-listing {
