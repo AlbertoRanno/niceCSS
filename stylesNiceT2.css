@@ -631,8 +631,9 @@ p a {
 .elm-header-logo-menu .submenu li {
 	width: 200px;
 	float: none;
-	display: list-item;
+	display: grid;
 	position: relative;
+	align-items: end;
 }
 
 .elm-header-logo-menu .submenu li a {
