@@ -1080,58 +1080,24 @@
             Luego del último grupo de guias, no va la coma.*/
 
             let guias = [
-                //Comercial - "Socios y Empresas"
+                // "Socios y Empresas"
                 [
-                    "Gestionar leads B2B",
-                    "Gestionar leads B2C",
-                    "Anticonceptivos",
-                    "Asesoramiento sobre aplicaciones",
-                    "Asistencia domiciliaria",
-                    "Bioqu\u00EDmica",
-                    "Cartilla",
-                    "Cirug\u00EDas",
-                    "Diabetes",
-                    "Discapacidad",
-                    "Empadronamiento",
-                    "Fertilidad",
-                    "Gesti\u00F3n de la calidad de atenci\u00F3n",
-                    "Medicamentos",
-                    "Odontolog\u00EDa",
-                    "Ortopedia",
-                    "PMI",
-                    "Pr\u00E1cticas",
-                    "Pr\u00E1cticas Condicionada",
-                    "Pr\u00E1cticas sin cobertura",
-                    "Psicopatolog\u00EDa",
-                    "Reintegros",
-                    "Traslado",
-                    "Vacunas",
-                    "Urgencias",
-                    "Altas",
-                    "Bajas",
-                    "Certificados",
-                    "Modificaciones",
-                    "Modificaciones del padr\u00F3n",
-                    "Modificaci\u00F3n de datos",
-                    "Subsidio - Licencia",
-                    "Cuenta corriente",
-                    "Facturaci\u00F3n",
-                    "Reintegros",
-                    "App OSDE",
-                    "Autogesti\u00F3n de empresas",
-                    "Credencial digital",
-                    "Turnos online",
-                    "Web OSDE"
+                    "Acceso al servicio",
+                    "Alta de socio - Modificaci\u00F3n de grupo familiar",
+                    "Baja de socios",
+                    "Empadronamientos a coberturas especiales",
+                    "Facturaci\u00F3n y Cobranzas a Socios",
+                    "Otorgamiento de Reintegro y Pago Directo",
+                    "Solicitud de Autorizaciones"
                 ],
-                //Prestadores
+                // Prestadores
                 [
                     "Aplicaciones",
                     "Extranet",
                     "Servicios",
                     "Validaci\u00F3n de l\u00EDnea"
                 ]
-
-            ]
+            ];
 
             function agregarCategoria(categoria, guias) {
                 let listItem = document.createElement('li');
@@ -1173,7 +1139,7 @@
             if (logoContainer) {
                 logoContainer.innerHTML = '';
                 logoContainer.appendChild(topLevelNavigation);
-            }
+            }            
 
             //*******************************Login********************************
         } else {
