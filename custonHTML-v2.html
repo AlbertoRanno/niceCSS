@@ -703,7 +703,7 @@
                 var link4P = document.createElement("p");
                 link4P.innerHTML =
                     "Para sugerir un nuevo art\u00EDculo, escribinos, desde tu cuenta de email, a contenidos\u0040osde.com.ar";
-                link4.setAttribute('title', 'Sugerir un nuevo art\u00EDculo');
+                //link4.setAttribute('title', 'Sugerir un nuevo art\u00EDculo');
                 link4.appendChild(link4P);
                 var iconoCopiarlink4 = document.createElement("img");
                 iconoCopiarlink4.src = "/@api/deki/files/305/copiarAlPortapapeles.png";
@@ -1082,13 +1082,13 @@
             let guias = [
                 // "Socios y Empresas"
                 [
-                    "Acceso al servicio",
                     "Alta de socio - Modificaci\u00F3n de grupo familiar",
-                    "Baja de socios",
-                    "Empadronamientos a coberturas especiales",
                     "Facturaci\u00F3n y Cobranzas a Socios",
+                    "Acceso al servicio",
+                    "Empadronamientos a coberturas especiales",
+                    "Solicitud de Autorizaciones",
                     "Otorgamiento de Reintegro y Pago Directo",
-                    "Solicitud de Autorizaciones"
+                    "Baja de socios"
                 ],
                 // Prestadores
                 [
@@ -1105,6 +1105,27 @@
                 let link = document.createElement('a');
                 link.href = "/" + encodeURIComponent(categoria);
                 link.textContent = categoria;
+
+                // Agregar el icono a la izquierda de cada sección
+                let icono;
+                if (categoria === "Socios y Empresas") {
+                    icono = document.createElement('img');
+                    icono.classList.add('internal', 'imgHome1');
+                    icono.alt = "mindtouch.page#thumbnail";
+                    icono.loading = "lazy";
+                    icono.src = "https://osde-prod2.mindtouch.us/@api/deki/files/516/mindtouch.page%2523thumbnail?revision=1";
+                } else if (categoria === "Prestadores") {
+                    icono = document.createElement('img');
+                    icono.classList.add('internal', 'imgHome2');
+                    icono.alt = "mindtouch.page#thumbnail";
+                    icono.loading = "lazy";
+                    icono.src = "https://osde-prod2.mindtouch.us/@api/deki/files/522/mindtouch.page%2523thumbnail?revision=1";
+                }
+
+                if (icono) {
+                    link.appendChild(icono);
+                }
+
                 link.title = categoria;
                 listItem.appendChild(link);
 
