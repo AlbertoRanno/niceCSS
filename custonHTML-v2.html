@@ -111,6 +111,8 @@
             }
         }
 
+
+
         //****************************Menu perfil usuario****************************
 
         var linkUsuario = document.querySelector('.mt-user-menu-user a');
@@ -396,14 +398,18 @@
                 }
             }
 
-            var imgHome = document.querySelectorAll('img.internal');
+            iconosCategoriasYGuias();
 
+        }
+
+        function iconosCategoriasYGuias() {
+
+            var imgHome = document.querySelectorAll('img.internal');
             imgHome.forEach(function (imagen, index) {
 
                 var imgHomeSucesivas = 'imgHome' + (index + 1);
                 imagen.classList.add(imgHomeSucesivas);
             });
-
         }
 
         //******************Esconder placeholders defaults**********************    
@@ -1119,7 +1125,7 @@
                     icono.classList.add('internal', 'imgHome2');
                     icono.alt = "mindtouch.page#thumbnail";
                     icono.loading = "lazy";
-                    icono.src = "https://osde-prod2.mindtouch.us/@api/deki/files/522/mindtouch.page%2523thumbnail?revision=1";
+                    icono.src = "https://osde-prod2.mindtouch.us/@api/deki/files/522/mindtouch.page%2523thumbnail?revision=4";
                 }
 
                 if (icono) {
