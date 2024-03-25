@@ -387,11 +387,13 @@ p a {
 	align-items: center;
 	font-weight: 500 !important;
 }
+
 @media (min-width: 68.5em) {
 	.elm-header-logo-menu li.has-submenu a {
 		margin: 10px 15px;
 	}
 }
+
 .elm-header-logo-menu li.has-submenu a:hover {
 	color: var(--primary-gray);
 }
@@ -558,7 +560,7 @@ p a {
 
 	.elm-header-logo-container,
 	.elm-header-logo-menu {
-		height: 58px;		
+		height: 58px;
 	}
 
 	.elm-header-logo-menu .navbar-header-logo img {
@@ -2195,7 +2197,8 @@ div.meta>div.url {
 .imgHome7,
 .imgHome8,
 .imgHome9,
-.imgHome10 {
+.imgHome10,
+span.mt-sortable-listing-image img.internal {
 	height: 60px;
 	filter: invert(11%) sepia(64%) saturate(7082%) hue-rotate(237deg) brightness(78%) contrast(98%);
 }
@@ -2342,7 +2345,7 @@ button.botonIrAListaResultados:hover {
 
 article.elm-content-container {
 	padding-top: 0px !important;
-        margin-top: 15px !important;
+	margin-top: 15px !important;
 }
 
 li.mt-sortable-listing {
@@ -2374,12 +2377,21 @@ li.elm-last-modified * {
 	color: transparent;
 }
 
-.has-submenu > a {
-    display: flex;
-    align-items: center;
+.contenedorFlecha {
+	pointer-events: none;
 }
 
-.has-submenu > a img {
-    order: -1; 
-    margin-right: 10px;
+.has-submenu>a {
+	display: flex;
+	align-items: center;
+}
+
+.has-submenu>a img {
+	order: -1;
+	margin-right: 10px;
+}
+
+.linkMasBotonCopiarPortapapelesLink4 .iconosCopiarNros {
+	position: relative;
+	left: -40px;
 }
