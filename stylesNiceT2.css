@@ -2378,7 +2378,11 @@ ul.listadoLinks::before {
 	color: var(--white);
 	font-size: 14px;
 }
-
+@media (max-width:25em){
+	.botonIrAListaResultados {
+        margin-right: 15px ;
+    }
+}
 button.botonIrAListaResultados:hover {
 	color: var(--secondary-light-blue);
 	background-color: transparent !important;
