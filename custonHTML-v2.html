@@ -1,3 +1,57 @@
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const IDsDivs = ['infoApi', 'infoApi1', 'infoApi2'];
+
+        IDsDivs.forEach(IdDiv => {
+            const divARecibirInfo = document.getElementById(IdDiv);
+            if (divARecibirInfo) {
+                let apiUrl;
+                switch (IdDiv) {
+                    case 'infoApi':
+                        apiUrl = 'https://jsonplaceholder.typicode.com/todos';
+                        break;
+                    case 'infoApi1':
+                        apiUrl = 'https://jsonplaceholder.typicode.com/todos/1';
+                        break;
+                    case 'infoApi2':
+                        apiUrl = 'https://jsonplaceholder.typicode.com/todos/2';
+                        break;
+                    default:
+                        console.warn(`ID de div desconocido: ${IdDiv}`);
+                        apiUrl = '';
+                }
+                fetch(apiUrl)
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json();
+                        }
+                        throw new Error('No se pudo traer la info desde la API');
+                    })
+                    .then(data => {
+                        if (Array.isArray(data)) {
+                            data.forEach(objeto => {
+                                const pContenedor = document.createElement('p');
+                                pContenedor.textContent =
+                                    `Tarea: ${objeto.title}, Completada: ${objeto.completed ? 'Sí' : 'No'}`;
+                                divARecibirInfo.appendChild(pContenedor);
+                            });
+                        } else {
+                            const pContenedor = document.createElement('p');
+                            pContenedor.textContent =
+                                `Tarea: ${data.title}, Completada: ${data.completed ? 'Sí' : 'No'}`;
+                            divARecibirInfo.appendChild(pContenedor);
+                        }
+                    })
+                    .catch(error => {
+                        console.error(`Hubo un problema con fetch para el div con ID ${IdDiv}:`,
+                            error);
+                    });
+            } else {
+                console.warn(`Div con ID ${IdDiv} no encontrado`);
+            }
+        });
+    });
+</script>
 <!-- Google Tag Manager -->
 <script>
     (function (w, d, s, l, i) {
@@ -100,7 +154,7 @@
         });
     });
 
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function () { 
 
         //****************************Ajuste para tablero****************************
 
@@ -111,7 +165,7 @@
             }
         }
 
-
+        //iconosCategoriasYGuias();
 
         //****************************Menu perfil usuario****************************
 
@@ -134,7 +188,6 @@
                     imgFlechaUsuario.src = '/@api/deki/files/26/downArrowWhite.png';
                 }
             }
-
             linkUsuario.addEventListener('click', cambiarFlecha);
         }
 
@@ -398,11 +451,11 @@
                 }
             }
 
-            iconosCategoriasYGuias();
+            //iconosCategoriasYGuias();
 
-        }
+       // }
 
-        function iconosCategoriasYGuias() {
+       // function iconosCategoriasYGuias() {
 
             var imgHome = document.querySelectorAll('img.internal');
             imgHome.forEach(function (imagen, index) {
@@ -463,7 +516,7 @@
                     textoSummary = textoSummary.replace(/\s*2\s*\{\s*\}\s*/g, '');
                     // Elimina el texto que coincide con el patron '2{}' con juego de espacios alrededor 
                     elemento.textContent = textoSummary;
-                });
+                });           
             }
             setInterval(function () {
                 ejecutarCorreccion2Llaves();
@@ -598,6 +651,22 @@
                     let textoEnNodo = clasificacion.childNodes[0];
                     textoEnNodo.nodeValue = "Caracter\u00EDsticas";
                 }
+             //******************METRICAS FILTROS DE BUSQUEDA******************************** 
+                const tipoCheckboxes = document.querySelectorAll('.mt-search-filters-classification-tipo input[type="checkbox"]');
+               
+                for (let i = 0; i < tipoCheckboxes.length; i++) {
+                    const checkbox = tipoCheckboxes[i];
+                    checkbox.addEventListener('click', (event) => {
+                        const tipoDeCatalogo = event.target.value.split(':');
+                        console.log('El usuario hizo clic en el checkbox con valor:', tipoDeCatalogo[1]);
+ 
+                        dataLayer.push({
+                            'event': 'filtro',
+                            'filtro_categoria': 'Catalogo',
+                            'filtro_nombre': tipoDeCatalogo[1],
+                        });
+                    });
+                }
 
                 let filtrosBuscador = document.getElementById('mt-search-spblls-filters');
                 let colapsablesPrincipales = filtrosBuscador.querySelectorAll(
@@ -716,7 +785,7 @@
                 iconoCopiarlink4.className = "iconosCopiarNros";
                 iconoCopiarlink4.alt = "Copiar al portapapeles";
                 iconoCopiarlink4.addEventListener("click", function () {
-                    copiarAlPortapapeles("contenidos\u0040osde.com.arr");
+                    copiarAlPortapapeles("contenidos\u0040osde.com.ar");
                 });
                 link4.appendChild(iconoCopiarlink4);
                 ul.appendChild(link3);
@@ -963,7 +1032,7 @@
             linkLogo.title = "Enlace al inicio";
             let logoImg = document.createElement('img');
             logoImg.alt = "Logo de la empresa";
-            logoImg.src = "/@api/deki/files/24/Logo_Biblos_OSDE_Azul.png";
+            logoImg.src = "/@api/deki/files/1036/Biblos_3.0_azul.png";
             linkLogo.appendChild(logoImg);
             elementoLogo.appendChild(linkLogo);
             ulPrincipal.appendChild(elementoLogo);
@@ -1032,6 +1101,8 @@
             if (window.location.href.startsWith("https://osde-prod2.mindtouch.us/Special:Search")) {
                 //Quisieron el boton de borrar, en el cuerpo de la pagina de resultados
             } else {
+                let liBtnListaResultados = document.createElement('li');
+                liBtnListaResultados.classList.add('navbar-header-menu');
                 let botonIrAListaResultados = document.createElement("button");
                 botonIrAListaResultados.innerHTML = "Lista de Resultados";
                 botonIrAListaResultados.classList.add("botonIrAListaResultados");
@@ -1039,7 +1110,8 @@
                 linkIrAListaResultados.href = "https://osde-prod2.mindtouch.us/Special:Search?type=wiki&query=";
                 linkIrAListaResultados.title = "Lista de Resultados";
                 botonIrAListaResultados.appendChild(linkIrAListaResultados);
-                ulConsejos.appendChild(botonIrAListaResultados);
+                liBtnListaResultados.appendChild(botonIrAListaResultados);
+                ulConsejos.appendChild(liBtnListaResultados);
                 botonIrAListaResultados.addEventListener('click', function () {
                     window.location.href =
                         "https://osde-prod2.mindtouch.us/Special:Search?type=wiki&query=";
@@ -1159,6 +1231,7 @@
             elementoMenu.appendChild(labelResponsive);
             elementoMenu.appendChild(ulSubList);
             ulPrincipal.appendChild(elementoMenu);
+            
             divContenedor.appendChild(ulPrincipal);
             topLevelNavigation.appendChild(divContenedor);
             topLevelNavigation.appendChild(divConsejos);
@@ -1166,7 +1239,7 @@
             if (logoContainer) {
                 logoContainer.innerHTML = '';
                 logoContainer.appendChild(topLevelNavigation);
-            }            
+            }
 
             //*******************************Login********************************
         } else {
