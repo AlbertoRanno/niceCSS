@@ -2311,11 +2311,11 @@ div.muestrario img {
 	height: 30px;
 }
 
-ul.listadoLinks {
+ul.listadoLinksN2, ul.listadoLinks {
 	position: relative !important;
 }
 
-ul.listadoLinks li {
+ul.listadoLinksN2 li, ul.listadoLinks li {
 	position: relative !important;
 	list-style: none !important;
 	margin: 10px 0 !important;
@@ -2324,7 +2324,7 @@ ul.listadoLinks li {
 }
 
 /* Circulo */
-ul.listadoLinks li::before {
+ul.listadoLinksN2 li::before, ul.listadoLinks li::before {
 	content: '';
 	background-color: #fff;
 	border: 0.2em solid #666;
@@ -2332,8 +2332,8 @@ ul.listadoLinks li::before {
 	color: #666;
 	display: block;
 	position: absolute;
-	left: 0;
-	top: 50%;
+	left: -2px;
+	top: 40%;
 	transform: translateY(-50%);
 	width: 10px;
 	height: 10px;
@@ -2341,10 +2341,10 @@ ul.listadoLinks li::before {
 }
 
 /* Linea punteada */
-ul.listadoLinks::before {
+ul.listadoLinksN2::before, ul.listadoLinks::before {
 	content: '';
 	position: absolute;
-	top: 0;
+	top: -2px;
 	left: 0;
 	width: 15px;
 	height: 100%;
@@ -2448,4 +2448,7 @@ li.elm-last-modified * {
 .linkMasBotonCopiarPortapapelesLink4 .iconosCopiarNros {
 	position: relative;
 	left: -40px;
+}
+ul.listadoLinksN2 li::before {
+        background-color: #666;
 }
