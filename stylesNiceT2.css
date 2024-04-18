@@ -2449,6 +2449,11 @@ li.elm-last-modified * {
 	position: relative;
 	left: -40px;
 }
+
 ul.listadoLinksN2 li::before {
         background-color: #666;
+}
+
+li.mt-user-menu-preferences{
+    display: none;
 }
