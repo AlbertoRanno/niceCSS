@@ -997,7 +997,6 @@ thead {
 	.navBarLateral .emptyRegions button:not(:first-child):not(:last-child) {
 		border-radius: 0;
 	}
-
 }
 
 /* Accordion */
