@@ -217,7 +217,6 @@ p a {
 	color: var(--background-light-blue) !important;
 }
 
-
 .elm-user-pro-member .mt-quick-search-container .mt-button {
 	color: var(--primary-black) !important;
 }
@@ -931,14 +930,71 @@ thead {
 	flex-grow: 1;
 	padding: 20px;
 }
+
 @media (max-width: 25em) {
-	.particularidades{
+	.particularidades {
 		flex-direction: column;
-		gap:20px;
+		gap: 20px;
 		padding-bottom: 16px;
 	}
-	.particularidades .navBarLateral{
+
+	.particularidades .navBarLateral {
 		width: 100%;
+	}
+}
+
+@media (min-width: 25.0625em) and (max-width: 63.125em) {
+
+	/* Entre 401px y 1010px */
+	.particularidades {
+		flex-direction: column;
+		gap: 20px;
+		padding-bottom: 16px;
+		border: none;
+	}
+
+	.particularidades .navBarLateral {
+		display: flex;
+		overflow: visible;
+		border: none;
+	}
+
+	.navBarLateral button.regionActiva {
+		border-bottom: 7px solid var(--primary-blue) !important;
+		border-right: 0 !important;
+	}
+
+	.navBarLateral button {
+		outline: 2px solid var(--primary-blue) !important;
+	}
+
+	.navBarLateral button+button {
+		margin-left: -2px;
+	}
+
+	.navBarLateral>.emptyRegions {
+		display: contents !important;
+	}
+
+	.navBarLateral button {
+		border-top: 0 !important;
+	}
+
+	.navBarLateral button:first-of-type:not(span > button) {
+		border-radius: 16px 0 0 0;
+	}
+
+	.navBarLateral button:last-of-type:not(span > button) {
+		border-radius: 0 16px 0 0;
+	}
+
+	.navBarLateral button:not(:first-of-type):not(:last-of-type) {
+		border-radius: 0;
+	}
+
+	/* Establece bordes rectos para los botones dentro de emptyRegions que no son el primero ni el último */
+	.navBarLateral .emptyRegions button:not(:first-child):not(:last-child) {
+		border-radius: 0;
 	}
 }
 
@@ -1194,34 +1250,41 @@ input[type="submit"].ui-button-primary {
 	border-bottom: 2px solid var(--light-gray);
 }
 
-@media (max-width:25em){
+@media (max-width:25em) {
 	.contenidosRegiones .collapse-buttons {
 		flex-direction: column;
 	}
+
 	.contenidosRegiones button:has(span.hasContent),
 	.contenidosRegiones button,
-	.contenidosRegiones button:hover{
-		border-bottom: 0;	
+	.contenidosRegiones button:hover {
+		border-bottom: 0;
 	}
+
 	.contenidosRegiones button:first-child {
 		border-radius: 16px 16px 0 0;
 	}
+
 	.contenidosRegiones button:last-of-type {
 		border-radius: 0 0 16px 16px;
 		border-bottom: 2px solid var(--primary-blue);
 	}
+
 	.contenidosRegiones button:has(span.hasContent) {
 		border-bottom: 0;
 	}
-	.contenidosRegiones button:has(span.hasContent):last-of-type{
+
+	.contenidosRegiones button:has(span.hasContent):last-of-type {
 		border-bottom: 2px solid var(--primary-blue);
 	}
 }
-@media (min-width:25em){
+
+@media (min-width:25em) {
+
 	.contenidosRegiones button:has(span.hasContent),
 	.contenidosRegiones button,
-	.contenidosRegiones button:hover{
-		border-right: 0;	
+	.contenidosRegiones button:hover {
+		border-right: 0;
 	}
 }
 
@@ -1608,12 +1671,13 @@ li.elm-pdf-export {
 	grid-template-columns: 1fr 1fr 3fr;
 }
 
-@media (max-width: 25em){
-	.telefonos_card{
-		border:none !important;
+@media (max-width: 25em) {
+	.telefonos_card {
+		border: none !important;
 		padding-left: 0 !important;
 	}
-} 
+}
+
 @media all and (min-width: 18.75em) {
 	.footer .container {
 		padding: 0.65rem 0.65rem 4em;
@@ -1704,6 +1768,7 @@ li.elm-pdf-export {
 	grid-template-columns: 1fr 1fr 1fr;
 	gap: 40px;
 }
+
 @media all and (max-width: 25em) {
 	.cards_telefonos {
 		grid-template-columns: 1fr;
@@ -1711,6 +1776,7 @@ li.elm-pdf-export {
 		grid-column-end: 3;
 	}
 }
+
 @media all and (min-width: 25em) {
 	.cards_telefonos {
 		grid-template-columns: 1fr;
@@ -1814,11 +1880,13 @@ li.elm-pdf-export {
 	left: 15px;
 	padding: 0.4em 0.8em;
 }
+
 @media all and (max-width: 25em) {
 	.consejo-busqueda-area ul ul {
 		width: 80%;
 	}
 }
+
 @media all and (min-width: 25em) {
 	.consejo-busqueda-area ul ul {
 		width: 90%;
@@ -2095,12 +2163,14 @@ div.meta>div.url {
 
 }
 
-@media(max-width:25em){
+@media(max-width:25em) {
+
 	.linkMasBotonCopiarPortapapeles,
 	.linkMasBotonCopiarPortapapelesLink4 {
 		justify-content: center;
 	}
 }
+
 .linkMasBotonCopiarPortapapeles {
 	align-items: flex-start;
 }
@@ -2208,7 +2278,7 @@ div.meta>div.url {
 }
 
 .navBarLateral button:first-child {
-	border: 0 !important;
+	border: 0;
 }
 
 .navBarLateral>.emptyRegions {
@@ -2248,7 +2318,7 @@ div.meta>div.url {
 .imgHome8,
 .imgHome9,
 .imgHome10,
-span.mt-sortable-listing-image img.internal{
+span.mt-sortable-listing-image img.internal {
 	height: 60px;
 	filter: invert(11%) sepia(64%) saturate(7082%) hue-rotate(237deg) brightness(78%) contrast(98%);
 }
@@ -2291,7 +2361,7 @@ div ul li {
 }
 
 .navBarLateral button.regionActiva {
-	border-right: 7px solid var(--primary-blue) !important;
+	border-right: 7px solid var(--primary-blue);
 }
 
 .nonEmptyRegion {
@@ -2311,11 +2381,13 @@ div.muestrario img {
 	height: 30px;
 }
 
-ul.listadoLinksN2, ul.listadoLinks {
+ul.listadoLinksN2,
+ul.listadoLinks {
 	position: relative !important;
 }
 
-ul.listadoLinksN2 li, ul.listadoLinks li {
+ul.listadoLinksN2 li,
+ul.listadoLinks li {
 	position: relative !important;
 	list-style: none !important;
 	margin: 10px 0 !important;
@@ -2324,7 +2396,8 @@ ul.listadoLinksN2 li, ul.listadoLinks li {
 }
 
 /* Circulo */
-ul.listadoLinksN2 li::before, ul.listadoLinks li::before {
+ul.listadoLinksN2 li::before,
+ul.listadoLinks li::before {
 	content: '';
 	background-color: #fff;
 	border: 0.2em solid #666;
@@ -2341,7 +2414,8 @@ ul.listadoLinksN2 li::before, ul.listadoLinks li::before {
 }
 
 /* Linea punteada */
-ul.listadoLinksN2::before, ul.listadoLinks::before {
+ul.listadoLinksN2::before,
+ul.listadoLinks::before {
 	content: '';
 	position: absolute;
 	top: -2px;
@@ -2378,11 +2452,13 @@ ul.listadoLinksN2::before, ul.listadoLinks::before {
 	color: var(--white);
 	font-size: 14px;
 }
-@media (max-width:25em){
+
+@media (max-width:25em) {
 	.botonIrAListaResultados {
-        margin-right: 15px ;
-    }
+		margin-right: 15px;
+	}
 }
+
 button.botonIrAListaResultados:hover {
 	color: var(--secondary-light-blue);
 	background-color: transparent !important;
@@ -2451,9 +2527,30 @@ li.elm-last-modified * {
 }
 
 ul.listadoLinksN2 li::before {
-        background-color: #666;
+	background-color: #666;
 }
 
-li.mt-user-menu-preferences{
-    display: none;
+li.mt-user-menu-preferences {
+	display: none;
+}
+
+.tituloLogin {
+	font-size: 20px !important;
+	font-weight: bold !important;
+	margin-bottom: 30px !important;
+	display: block;
+}
+
+.linkLoginBiblos {
+	font-size: 24px;
+	color: var(--secondary-light-blue) !important;
+	text-decoration: none;
+	transition: color 0.3s;
+	display: block;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.linkLoginBiblos:hover {
+	color: var(--primary-blue) !important;
 }
