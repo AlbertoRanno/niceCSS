@@ -2549,26 +2549,19 @@ li.mt-user-menu-preferences {
 	
 
 	.navBarLateral button {
-		border-top: 0 !important;
+		border-top: 0;
 	}
 
-	.navBarLateral > .emptyRegions:first-child button:first-child,
-	.navBarLateral button:first-of-type:not(span > button) {
+	.navBarLateral > .emptyRegions:first-child button:first-child, 
+	.navBarLateral button:first-child:is(:not(span > button)) {
 		border-radius: 16px 0 0 0;
 	}
 
-	.navBarLateral .emptyRegions:is(:last-of-type) button:last-child,
-	.navBarLateral button:last-of-type:not(span > button) {
+	.navBarLateral .emptyRegions:last-of-type:is(:has( + ul)) button:last-child,
+	.navBarLateral :is(.emptyRegions:last-of-type + button:last-of-type){
 		border-radius: 0 16px 0 0;
 	}
-
-	.navBarLateral .emptyRegions:is(.emptyRegions + button) button,
-	.navBarLateral button:last-of-type:not(button + .emptyRegions),
-	.navBarLateral .emptyRegions:first-child + button,
-	.navBarLateral button:not(:first-of-type):not(:last-of-type) {
-		border-radius: 0;
-	}
-
+	
 	/* Establece bordes rectos para los botones dentro de emptyRegions que no son el primero ni el último */
 	
 	.navBarLateral .emptyRegions button:not(:first-child):not(:last-child) {
