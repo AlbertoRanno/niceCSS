@@ -1,6 +1,7 @@
 /* Variable colores */
 :root {
 	--primary-blue: #1226aa;
+	--primary-blue-gradient: #121a52;
 	--background-light-blue: #e7e9f7;
 	--background-light-blue-2: #f1f2fa;
 	--secondary-background: #d2d6f0;
@@ -2479,19 +2480,51 @@ li.mt-user-menu-preferences {
 	margin-bottom: 30px !important;
 	display: block;
 }
-
-.linkLoginBiblos {
-	font-size: 24px;
-	color: var(--secondary-light-blue) !important;
-	text-decoration: none;
-	transition: color 0.3s;
-	display: block;
-	margin-top: 20px;
-	margin-bottom: 20px;
+.btn-login-area{
+	padding: 0 0 2em;
+}
+.btn-login-area p{
+	padding-bottom: 2em;
+	text-align: center;
+}
+.btn-login-area .linkLoginBiblos {
+	border-radius: 16px;
+	background: var(--primary-blue);
+	color: var(--white);
+	font-size: 22px;
+	font-weight: 700 !important;
+	padding: 13px 48px;
+	text-decoration: none !important;
+	display:block;
+	max-width: 400px;
+	text-align: center;
+	margin: 0 auto;
 }
 
-.linkLoginBiblos:hover {
-	color: var(--primary-blue) !important;
+.btn-login-area .linkLoginBiblos:hover {
+	background: linear-gradient(90deg, var(--primary-blue-gradient) 0%, var(--primary-blue) 100%);
+	color: var(--white) !important;
+}
+
+#mt-login-form .ui-button{
+	border-radius: 16px;
+	background: var(--primary-blue);
+	font-size: 18px;
+	line-height: 22px;
+	padding: 0 48px;
+	text-decoration: none !important;
+	height: 48px;
+	border: none !important;
+}
+#mt-login-form .ui-button span{
+	font-size: 18px;
+	line-height: 22px;
+	color: var(--white) !important;
+	font-weight: 700 !important;
+}
+#mt-login-form .ui-button:hover {
+	background: linear-gradient(90deg, var(--primary-blue-gradient) 0%, var(--primary-blue) 100%);
+	color: var(--white) !important;
 }
 
 /* Hasta 650px a Fuente del contenedor a 16px*/
