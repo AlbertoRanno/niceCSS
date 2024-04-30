@@ -1,4 +1,31 @@
-/*Pro Member CSS*/
+/* Anonymous CSS - Unicamente pantalla de Login */
+/*Dejar comentado en tenant 1*/
+#SpecialUserLogin {
+    display: none !important;
+}
+
+
+/* Community Member CSS */
+.mt-user-menu-user, /* Dejar comentado en tenant 1 */
+div.mt-new-features-container, /* Actualizaciones Nice */
+.botonIrAListaResultados,
+.mt-search-filters-classification-article,
+.mt-search-filters-classification-propietario,
+.mt-search-filters-classification-tipo-servicios-procedimiento,
+.mt-search-filters-classification-tipo-basico,
+.mt-search-filters-classification-tipo-servicios-2do-nivel,
+.mt-search-filters-classification-tipo-prestaciones-2do-nivel {
+    display: none !important;
+}
+
+/* Icono del menu perfil -Arreglaba la intermitencia de color para los usuarios de roles bajos, pero de momento está oculto todo el menú
+.mt-icon-user-menu::before,
+.mt-icon-user-menu:focus::before,
+.mt-icon-user-menu:active::before {
+    color: white;
+} */
+
+/* Pro Member CSS */
 .EXPAND_COLLAPSE dt {
     border: 2px green solid !important;
     padding: 3px;
@@ -26,21 +53,7 @@
     margin: 5px !important;
 }
 
-/*********************************************************************************************************************/
-
-/*Anonymous - Community - Pro Member CSS*/
-/*#SpecialUserLogin,*/
-.botonIrAListaResultados,
-.mt-search-filters-classification-article,
-.mt-search-filters-classification-propietario,
-.mt-search-filters-classification-tipo-servicios-procedimiento,
-.mt-search-filters-classification-tipo-basico {
-    display: none;
-}
-
-/* Icono del menu perfil */
-.mt-icon-user-menu::before,
-.mt-icon-user-menu:focus::before,
-.mt-icon-user-menu:active::before {
-    color: white; 
+/*A diferencia de los community, los Pro tienen acceso a suscripciones y contribuciones en el menu perfil, y se pidio que puedan cerrar sesion */
+.mt-user-menu-preferences {
+    display: none !important;
 }
