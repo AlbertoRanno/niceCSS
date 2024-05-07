@@ -442,19 +442,43 @@
         revertirHasContent();
 
         //****************************METRICAS DE NIVEL DE PAGINA****************************
-        const urlActual = window.location.href;
+        window.addEventListener('load', function () {
+            const urlActual = window.location.href;
+            if (urlActual.startsWith('https://osde-prod2.mindtouch.us/Special:PageRestrictions?id=')) {
+                setTimeout(function () {
 
-        if (urlActual.startsWith('https://osde-prod2.mindtouch.us/Special:PageRestrictions?id=')) {
-            console.log('Es una pagina de restriccion');
-            var ulElement = document.getElementById("page-restrictions-grant-list");
-            console.log('ulElement: ', ulElement);
+                    var urlPageLevel = document.querySelector('.or a');
+                    var url = urlPageLevel.getAttribute('href');
+                    var pageName = urlPageLevel.textContent.replace('Volver a ','');
+                    console.log('Pagina: ', pageName, "\n url ", url);
 
-            var children = ulElement.children;
-            console.log('children: ', children);
-            console.log('children sub: ', children.HTMLCollection);
-        } else {
-            console.log('No esta en una pagina de restriccion');
-        }
+                    var listadoDeRestricciones = document.getElementById("page-restrictions-grant-list");
+                    if (listadoDeRestricciones) {
+                        var listadoDeRestriccionesChildren = listadoDeRestricciones.children;
+                        var lista_grupos_permitidos = [];
+                        if (listadoDeRestriccionesChildren) {
+                            for (var i = 0; i < listadoDeRestriccionesChildren.length; i++) {
+                                var li = listadoDeRestriccionesChildren[i];
+                                if (li.classList.contains('group')) {
+                                    var grupoPermitidoSpan = li.querySelector("span.name");
+                                    if (grupoPermitidoSpan) {
+                                        var nombreGrupoPermitido = grupoPermitidoSpan.textContent.trim();
+                                        lista_grupos_permitidos.push(nombreGrupoPermitido);
+                                    }
+                                }
+                            }
+                            console.log('Grupos permitidos: ', lista_grupos_permitidos);
+                        } else {
+                            //console.log('listadoDeRestricciones no tiene hijos');
+                        }
+                    } else {
+                        //console.log('No encontro el id "page-restrictions-grant-list"');
+                    }
+                }, 500);
+            } else {
+                //console.log('No es una pagina de restriccion');
+            }
+        });
 
         //****************************METRICAS POR AGRUPADOR****************************
         var selectElement, selectedValue, selectElementOwner, selectElementType, propietario, catalogo, formato,
