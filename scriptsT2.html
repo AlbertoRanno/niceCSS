@@ -175,21 +175,6 @@
                 });
             });
         }
-
-        //**************** Ocultar el "Dejar comentario" para calificaciones positivas ****************
-        if (document.querySelector('.mt-rating-button-yes')) {
-            const yesButton = document.querySelector('.mt-rating-button-yes');
-            const noButton = document.querySelector('.mt-rating-button-no');
-            const feedbackForm = document.querySelector('.mt-feedback-form');
-
-            yesButton.addEventListener('click', () => {
-                feedbackForm.style.display = 'none';
-            });
-
-            noButton.addEventListener('click', () => {
-                feedbackForm.style.display = 'block';
-            });
-        }
         
         //**************************** Obtener tipo de usuario activo *************************************
         if (document.getElementById("usuarioActivoTipo")) {
@@ -247,7 +232,7 @@
             btnEnvioFeedback.addEventListener('click', function () {
                 comentarioFeedback = textAreaFeedback.value;
                 dataLayer.push({
-                    'tipo_feedback': '',
+                    'tipo_feedback': 'comentario',
                     'comentario': comentarioFeedback,
                     'usuarioactivo_grupo': usuarioActivoGrupo
                 });
