@@ -190,7 +190,69 @@
                 feedbackForm.style.display = 'block';
             });
         }
+        
+        //**************************** Obtener tipo de usuario activo *************************************
+        if (document.getElementById("usuarioActivoTipo")) {
+            var divUsuarioActivoTipo = document.getElementById("usuarioActivoTipo");
+            var tipoDeUsuario = obtenertipoDeUsuario();
+            if (tipoDeUsuario) {
+                divUsuarioActivoTipo.textContent = tipoDeUsuario;
+            }
+        }
 
+        function obtenertipoDeUsuario() {
+            var usuarioActivoTipo;
+            if (document.getElementById('usuarioActivoPro') && document.getElementById('usuarioActivoAdmin')) {
+                if (document.getElementById('usuarioActivoPro').textContent == "true") {
+                    usuarioActivoTipo = "Pro"
+                } else {
+                    usuarioActivoTipo = "Visualizador"
+                }
+                if (document.getElementById('usuarioActivoAdmin').textContent == "true") {
+                    usuarioActivoTipo = "Admin"
+                }
+                return usuarioActivoTipo;
+            }
+        }
+        //****************************METRICAS FEEDBACK****************************
+        if (document.querySelector('.mt-rating-button-yes')) {
+
+            var usuarioActivoGrupo, btnFeedbackSi, btnFeedbackNo, btnEnvioFeedback, textAreaFeedback, comentarioFeedback;
+
+            btnEnvioFeedback = document.querySelector('.mt-feedback-submit');
+            textAreaFeedback = document.getElementById('textarea-feedback');
+            btnFeedbackSi = document.querySelector('.mt-rating-button-yes');
+            btnFeedbackNo = document.querySelector('.mt-rating-button-no');
+            usuarioActivoGrupo = obtenerNombreDeGrupo();
+            const feedbackForm = document.querySelector('.mt-feedback-form');
+
+            btnFeedbackSi.addEventListener('click', () => {
+                feedbackForm.style.display = 'none';
+                dataLayer.push({
+                    'tipo_feedback': 'Si',
+                    'comentario': '',
+                    'usuarioactivo_grupo': usuarioActivoGrupo
+                });
+            });
+
+            btnFeedbackNo.addEventListener('click', () => {
+                feedbackForm.style.display = 'block';
+                dataLayer.push({
+                    'tipo_feedback': 'No',
+                    'comentario': '',
+                    'usuarioactivo_grupo': usuarioActivoGrupo
+                });
+            });
+
+            btnEnvioFeedback.addEventListener('click', function () {
+                comentarioFeedback = textAreaFeedback.value;
+                dataLayer.push({
+                    'tipo_feedback': '',
+                    'comentario': comentarioFeedback,
+                    'usuarioactivo_grupo': usuarioActivoGrupo
+                });
+            });
+        }
         //*********************Cambiar Nombre en solapa Featured Articles*********************
         function cambiarNombreEnSolapa() {
             var featuredHighestRated = document.querySelector('.noindex .mt-featured-highest-rated');
@@ -621,13 +683,14 @@
         }
 
         function obtenerNombreDeGrupo() {
+            if (document.getElementById("usuarioActivoGrupo")) {
+                var divContent = document.getElementById("usuarioActivoGrupo").textContent;
+                var colonIndex = divContent.indexOf(':');
 
-            var divContent = document.getElementById("usuarioActivoGrupo").textContent;
-            var colonIndex = divContent.indexOf(':');
-
-            if (colonIndex !== -1) {
-                var jsonName = divContent.substring(1, colonIndex).trim();
-                return jsonName;
+                if (colonIndex !== -1) {
+                    var jsonName = divContent.substring(1, colonIndex).trim();
+                    return jsonName;
+                }
             }
         }
         //****************************Lista de resultados************************************
