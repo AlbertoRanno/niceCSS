@@ -2037,11 +2037,11 @@ div.meta>div.url {
 .EXPAND_COLLAPSE td {
 	width: auto !important;
 }
-
 #usuarioActivoID,
 #usuarioActivoGrupo,
 #usuarioActivoTipo,
 #usuarioActivoAdmin,
+#usuarioActivoPro,
 #googleTagManager {
 	display: none;
 	width: 0px;
