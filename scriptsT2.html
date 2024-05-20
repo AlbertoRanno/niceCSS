@@ -202,42 +202,33 @@
         //****************************METRICAS FEEDBACK****************************
         if (document.querySelector('.mt-rating-button-yes')) {
 
-            var usuarioActivoGrupo, btnFeedbackSi, btnFeedbackNo, btnEnvioFeedback, textAreaFeedback,
-                comentarioFeedback;
+            var btnFeedbackSi, btnFeedbackNo, btnEnvioFeedback, textAreaFeedback,
+                comentarioFeedback, tipo_feedback;
 
             btnEnvioFeedback = document.querySelector('.mt-feedback-submit');
             textAreaFeedback = document.getElementById('textarea-feedback');
             btnFeedbackSi = document.querySelector('.mt-rating-button-yes');
             btnFeedbackNo = document.querySelector('.mt-rating-button-no');
-            usuarioActivoGrupo = obtenerNombreDeGrupo();
             const feedbackForm = document.querySelector('.mt-feedback-form');
 
             btnFeedbackSi.addEventListener('click', () => {
                 feedbackForm.style.display = 'none';
-                dataLayer.push({
-                    'tipo_feedback': 'Si',
-                    'comentario': '',
-                    'usuarioactivo_grupo': usuarioActivoGrupo
-                });
             });
 
             btnFeedbackNo.addEventListener('click', () => {
                 feedbackForm.style.display = 'block';
-                dataLayer.push({
-                    'tipo_feedback': 'No',
-                    'comentario': '',
-                    'usuarioactivo_grupo': usuarioActivoGrupo
-                });
             });
 
             btnEnvioFeedback.addEventListener('click', function () {
+                tipo_feedback = "Comentario";
                 comentarioFeedback = textAreaFeedback.value;
                 dataLayer.push({
-                    'tipo_feedback': '',
-                    'comentario': comentarioFeedback,
-                    'usuarioactivo_grupo': usuarioActivoGrupo
+                    'event': 'Feedback comentario',
+                    'tipo_feedback': tipo_feedback,
+                    'comentario': comentarioFeedback
                 });
             });
+            console.log("Tipo Feedback: ", tipo_feedback, " Comentario: ", comentarioFeedback);
         }
         //*********************Cambiar Nombre en solapa Featured Articles*********************
         function cambiarNombreEnSolapa() {
@@ -1352,14 +1343,14 @@
                 "Liquidaci\u00F3n de consumos y pagos",
                 "Baja de prestadores"
             ],
-             // Urgencias
+            // Urgencias
             [
                 "Servicios y Fichas de codificaci\u00F3n"
             ],
             // Base de conocimiento interna
             [
                 "Calidad de atenci\u00F3n",
-            ]            
+            ]
         ];
 
         function agregarCategoria(categoria, guias) {
@@ -1468,7 +1459,7 @@
             if (tituloLogin) {
                 var divBotonLogin = document.createElement('div');
                 divBotonLogin.className = "btn-login-area";
-                tituloLogin.innerHTML = 'Te damos la bienvenida a la base de conocimientos de OSDE';
+                tituloLogin.innerHTML = 'Te damos la bienvenida a la base de conocimientos de OSDE.';
                 tituloLogin.className = 'tituloLogin';
                 var LogoLoginTxt = document.createElement('h2');
                 LogoLoginTxt.innerHTML = 'Biblos 3.0';
