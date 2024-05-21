@@ -175,7 +175,42 @@
                 });
             });
         }
+        
+        //********************* METRICAS DE ARCHIVOS POR ARTICULO *********************
+        if (document.querySelectorAll('.ext-pdf, .ext-docx, .ext-jpg, .ext-png, .ext-doc')) {
+            var files = document.querySelectorAll('.ext-pdf, .ext-docx, .ext-jpg, .ext-png, .ext-doc');
+            var fileData = [];
 
+            files.forEach(function (file) {
+                var fileName = file.getAttribute('title');
+                var fileUrl = file.getAttribute('href');
+                var fileType = '';
+
+                if (file.classList.contains('ext-pdf')) {
+                    fileType = 'PDF';
+                } else if (file.classList.contains('ext-docx') || file.classList.contains('ext-doc')) {
+                    fileType = 'Documento';
+                } else if (file.classList.contains('ext-jpg') || file.classList.contains('ext-png')) {
+                    fileType = 'Imagen';
+                }
+
+                fileData.push({
+                    type: fileType,
+                    name: fileName,
+                    url: fileUrl
+                });
+            });
+
+            fileData.forEach(function (file) {
+                dataLayer.push({
+                    'event': 'Archivos por articulo',
+                    'fileType': file.type,
+                    'fileName': file.name,
+                    'fileUrl': file.url
+                });
+                console.log("fileTipo: ", file.type, "\nfileName: ", file.name, "\nfileName: ", file.url);
+            });
+        }
         //**************************** Obtener tipo de usuario activo *************************************
         if (document.getElementById("usuarioActivoTipo")) {
             var divUsuarioActivoTipo = document.getElementById("usuarioActivoTipo");
@@ -227,8 +262,8 @@
                     'tipo_feedback': tipo_feedback,
                     'comentario': comentarioFeedback
                 });
+                console.log("Tipo Feedback: ", tipo_feedback, " Comentario: ", comentarioFeedback);
             });
-            console.log("Tipo Feedback: ", tipo_feedback, " Comentario: ", comentarioFeedback);
         }
         //*********************Cambiar Nombre en solapa Featured Articles*********************
         function cambiarNombreEnSolapa() {
