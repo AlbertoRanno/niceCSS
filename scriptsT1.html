@@ -1,57 +1,3 @@
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const IDsDivs = ['infoApi', 'infoApi1', 'infoApi2'];
-
-        IDsDivs.forEach(IdDiv => {
-            const divARecibirInfo = document.getElementById(IdDiv);
-            if (divARecibirInfo) {
-                let apiUrl;
-                switch (IdDiv) {
-                    case 'infoApi':
-                        apiUrl = 'https://jsonplaceholder.typicode.com/todos';
-                        break;
-                    case 'infoApi1':
-                        apiUrl = 'https://jsonplaceholder.typicode.com/todos/1';
-                        break;
-                    case 'infoApi2':
-                        apiUrl = 'https://jsonplaceholder.typicode.com/todos/2';
-                        break;
-                    default:
-                        console.warn(`ID de div desconocido: ${IdDiv}`);
-                        apiUrl = '';
-                }
-                fetch(apiUrl)
-                    .then(response => {
-                        if (response.ok) {
-                            return response.json();
-                        }
-                        throw new Error('No se pudo traer la info desde la API');
-                    })
-                    .then(data => {
-                        if (Array.isArray(data)) {
-                            data.forEach(objeto => {
-                                const pContenedor = document.createElement('p');
-                                pContenedor.textContent =
-                                    `Tarea: ${objeto.title}, Completada: ${objeto.completed ? 'Sí' : 'No'}`;
-                                divARecibirInfo.appendChild(pContenedor);
-                            });
-                        } else {
-                            const pContenedor = document.createElement('p');
-                            pContenedor.textContent =
-                                `Tarea: ${data.title}, Completada: ${data.completed ? 'Sí' : 'No'}`;
-                            divARecibirInfo.appendChild(pContenedor);
-                        }
-                    })
-                    .catch(error => {
-                        console.error(`Hubo un problema con fetch para el div con ID ${IdDiv}:`,
-                            error);
-                    });
-            } else {
-                //console.warn(`Div con ID ${IdDiv} no encontrado`);
-            }
-        });
-    });
-</script>
 <!--No corresponden métricas del tenant 1 -->
 <script src="https://unpkg.com/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
 <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.min.js"></script>
@@ -138,6 +84,35 @@
     });
 
     document.addEventListener('DOMContentLoaded', function () {
+        //********************* Consumo de API externa a clase "salusoft" *********************
+
+        const spansSalusoft = document.querySelectorAll('span[class^="salusoft"]');
+        const filteredSpans = Array.from(spansSalusoft).filter(span => span.textContent.includes('$'));
+        filteredSpans.forEach(span => {
+            let apiUrl;
+            const spanClass = span.className;
+            const match = spanClass.match(/\d+/);
+            const number = match ? match[0] : '';
+            if (number === '') {
+                apiUrl = 'https://jsonplaceholder.typicode.com/todos';
+            } else {
+                apiUrl = `https://jsonplaceholder.typicode.com/todos/${number}`;
+            }
+            fetch(apiUrl)
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw new Error('No se pudo traer la info desde la API');
+                })
+                .then(data => {
+                    span.textContent = data.title;
+                })
+                .catch(error => {
+                    console.error(`Hubo un problema con fetch para el span con clase ${spanClass}:`,
+                        error);
+                });
+        });
 
         //********************* Foco automático en vista mobile de Particularidades *********************
         if (window.innerWidth < 650) {
@@ -582,6 +557,26 @@
             segundoNombreGrupo); // Resultado: ac-nice-viewers-comercial-low
         }
         
+        /* WAN... Estaba actualizando el repo, y no sabia cual cambio dejarte..
+        function obtenerNombreDeGrupo() {
+            const objetoOriginal = document.getElementById('usuarioActivoGrupo').textContent;
+
+            function agregarComillasAClaveYValor(clave, valor) {
+                if (typeof valor === 'string') {
+                    return `"${clave}": "${valor}"`;
+                } else {
+                    return `"${clave}": ${ valor }`;
+                }
+            }
+
+            const objetoConComillas = Object.entries(objetoOriginal).reduce((acc, [clave, valor]) => {
+                acc[agregarComillasAClaveYValor(clave, valor)] = valor;
+                return acc;
+            }, {});
+
+            console.log(objetoConComillas);
+        }
+        */
         //****************************Lista de resultados************************************
         if (window.location.href.startsWith("https://osde-prod1.mindtouch.us/Special:Search")) {
 
@@ -1210,7 +1205,7 @@
         */
 
         //Agregar la nueva categoria al listado, en la ubicacion deseada, mantener el formato ("nombre",). La ultima va sin coma.
-        let categorias = ["Socios y Empresas", "Prestadores"];
+        let categorias = ["Socios y Empresas", "Prestadores","Urgencias", "Base de conocimiento interna"];
 
         /*Agregar las guias pertenecientes a la nueva Categoria, en la MISMA UBICACION QUE PUSIERON LA CATEGORIA (Si agregaron una
         Categoría luego de Afiliaciones, los corchetes con las guías para esta nueva categoría, irán después de los corchetes que 
@@ -1234,7 +1229,12 @@
                 "Extranet",
                 "Servicios",
                 "Validaci\u00F3n de l\u00EDnea"
-            ]
+            ],
+            //Urgencias
+            ["Servicios y Fichas de codificaci\u00F3n"],
+
+            // Base de conocimiento interna
+            ["Calidad de atenci\u00F3n"]
         ];
 
         function agregarCategoria(categoria, guias) {

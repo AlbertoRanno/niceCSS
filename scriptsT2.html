@@ -204,9 +204,9 @@
             fileData.forEach(function (file) {
                 dataLayer.push({
                     'event': 'Archivos por articulo',
-                    'fileType': file.type,
-                    'fileName': file.name,
-                    'fileUrl': file.url
+                    'file_type': file.type,
+                    'file_name': file.name,
+                    'file_url': file.url
                 });
                 console.log("fileTipo: ", file.type, "\nfileName: ", file.name, "\nfileName: ", file.url);
             });
