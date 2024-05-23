@@ -2037,11 +2037,13 @@ div.meta>div.url {
 .EXPAND_COLLAPSE td {
 	width: auto !important;
 }
+
 #usuarioActivoID,
 #usuarioActivoGrupo,
 #usuarioActivoTipo,
 #usuarioActivoAdmin,
 #usuarioActivoPro,
+#usuarioActivoProperties,
 #googleTagManager {
 	display: none;
 	width: 0px;
@@ -2623,4 +2625,12 @@ li.mt-user-menu-preferences {
 	.navBarLateral .emptyRegions button:not(:first-child):not(:last-child) {
 		border-radius: 0;
 	}
+}
+
+.mt-responsive-table {
+	border-collapse: collapse;
+}
+
+.mt-responsive-table td {
+	border: 1px solid var(--medium-gray);
 }
