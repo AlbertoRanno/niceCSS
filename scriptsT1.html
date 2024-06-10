@@ -227,11 +227,11 @@
             btnEnvioFeedback.addEventListener('click', function () {
                 tipo_feedback = "Comentario";
                 comentarioFeedback = textAreaFeedback.value;
-                dataLayer.push({
+               /* dataLayer.push({
                     'event': 'Feedback comentario',
                     'tipo_feedback': tipo_feedback,
                     'comentario': comentarioFeedback
-                });
+                });*/
                 console.log("Tipo Feedback: ", tipo_feedback, " Comentario: ", comentarioFeedback);
             });
         }

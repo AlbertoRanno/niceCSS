@@ -705,18 +705,22 @@
         }
         //****************************Lista de resultados************************************
         if (window.location.href.startsWith("https://osde-prod2.mindtouch.us/Special:Search")) {
-            
-            function obtenerTerminoDeBusqueda() {
-                    let urlBusqueda, queryIndex, terminoBuscado, termino;
-                    urlBusqueda = window.location.href;
-                    queryIndex = urlBusqueda.split('&query=');
-                    terminoBuscado = queryIndex[1].toString();
-                    termino = terminoBuscado.replace(/\+/g, ' ');
-                    console.log("queryIndex: ", termino);
+            let urlPrevia;
+            urlPrevia = window.location.href;
+           
+            function obtenerTerminoDeBusqueda(urlActual) {
+                    let queryUrl, queryIndex, query, termino, terminoBuscado;
+
+                    queryUrl = urlActual.split('query=');
+                    queryIndex = queryUrl[1].toString();
+                    query = queryIndex.replace(/\+/g, ' ');
+                    termino = query.split('&type=wiki');
+                    terminoBuscado = termino[0].toString();
+                    console.log("queryIndex: ", terminoBuscado);
                     
                     dataLayer.push({
                     'event': 'Buscador',
-                    'termino_buscado': termino
+                    'termino_buscado': terminoBuscado
                 });
             }
 
@@ -730,8 +734,13 @@
                 });
             }
             setInterval(function () {
+                let urlActual = window.location.href;
                 ejecutarCorreccion2Llaves();
-                obtenerTerminoDeBusqueda();
+               
+                if(urlActual !== urlPrevia){
+                    obtenerTerminoDeBusqueda(urlActual);
+                    urlPrevia = urlActual;
+                }
             }, 1000);
 
             document.addEventListener('click', function (event) {
