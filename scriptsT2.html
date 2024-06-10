@@ -505,7 +505,7 @@
                         "page-restrictions-grant-list");
                     if (listadoDeRestricciones) {
                         var listadoDeRestriccionesChildren = listadoDeRestricciones.children;
-                        var lista_grupos_permitidos = [];
+                        var lista_grupos_permitidos = "";
                         if (listadoDeRestriccionesChildren) {
                             for (var i = 0; i < listadoDeRestriccionesChildren.length; i++) {
                                 var li = listadoDeRestriccionesChildren[i];
@@ -514,10 +514,12 @@
                                     if (grupoPermitidoSpan) {
                                         var nombreGrupoPermitido = grupoPermitidoSpan
                                             .textContent.trim();
-                                        lista_grupos_permitidos.push(nombreGrupoPermitido);
+                                        lista_grupos_permitidos += nombreGrupoPermitido + ', ';
                                     }
                                 }
                             }
+                            lista_grupos_permitidos = lista_grupos_permitidos.slice(0, -2);
+
                             dataLayer.push({
                                 'titulo_nivel_de_pagina': pageName,
                                 'url_nivel_de_pagina': url,
@@ -683,6 +685,20 @@
         }
         //****************************Lista de resultados************************************
         if (window.location.href.startsWith("https://osde-prod2.mindtouch.us/Special:Search")) {
+            
+            function obtenerTerminoDeBusqueda() {
+                    let urlBusqueda, queryIndex, terminoBuscado, termino;
+                    urlBusqueda = window.location.href;
+                    queryIndex = urlBusqueda.split('&query=');
+                    terminoBuscado = queryIndex[1].toString();
+                    termino = terminoBuscado.replace(/\+/g, ' ');
+                    console.log("queryIndex: ", termino);
+                    
+                    dataLayer.push({
+                    'event': 'Buscador',
+                    'termino_buscado': termino
+                });
+            }
 
             function ejecutarCorreccion2Llaves() {
                 let resultadosLista = document.querySelectorAll('.mt-search-partial-content');
@@ -695,6 +711,7 @@
             }
             setInterval(function () {
                 ejecutarCorreccion2Llaves();
+                obtenerTerminoDeBusqueda();
             }, 1000);
 
             document.addEventListener('click', function (event) {
