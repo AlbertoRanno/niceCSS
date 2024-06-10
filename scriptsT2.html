@@ -1,3 +1,23 @@
+<script>
+    /******************************** Orden Filtros en Lista de Resultados *******************************/
+    window.addEventListener("load", function () {
+        if (window.location.href.startsWith("https://osde-prod2.mindtouch.us/Special:Search")) {
+            setTimeout(function () {
+                let divPrincipalFiltros = document.getElementById('mt-search-spblls-filters');
+                let ulPrincipalFiltros = divPrincipalFiltros.querySelector(
+                    '.mt-search-filters-options');
+                let arrayLiPrincipalesFiltros = Array.from(ulPrincipalFiltros.children);
+                if (arrayLiPrincipalesFiltros.length >= 3) {
+                    let segundoLi = arrayLiPrincipalesFiltros[1];
+                    let tercerLi = arrayLiPrincipalesFiltros[2];
+                    let cuartoLi = arrayLiPrincipalesFiltros[3];
+                    ulPrincipalFiltros.insertBefore(tercerLi, segundoLi);
+                    ulPrincipalFiltros.insertBefore(segundoLi, cuartoLi);
+                }
+            }, 500);
+        }
+    })
+</script>
 <!-- Google Tag Manager -->
 <script>
     (function (w, d, s, l, i) {
