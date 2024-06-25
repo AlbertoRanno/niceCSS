@@ -2044,6 +2044,7 @@ div.meta>div.url {
 #usuarioActivoAdmin,
 #usuarioActivoPro,
 #usuarioActivoProperties,
+#usuarioActivoEmail,
 #googleTagManager {
 	display: none;
 	width: 0px;
@@ -2625,4 +2626,44 @@ li.mt-user-menu-preferences {
 	.navBarLateral .emptyRegions button:not(:first-child):not(:last-child) {
 		border-radius: 0;
 	}
+}
+
+.mt-responsive-table {
+	border-collapse: collapse;
+}
+
+.mt-responsive-table td {
+	border: 1px solid var(--medium-gray);
+}
+
+/*Estilo de alerta en configuracion de pagina*/
+#alerta-config-page {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1000;
+	visibility: hidden;
+	background-color: var(--background-light-blue-2);
+	border: 2px solid var(--primary-blue);
+	padding: 20px;
+	border-radius: 5px;
+	text-align: center;
+}
+
+#alerta-config-page p {
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+
+#alerta-config-page button {
+	padding: 5px 10px;
+	background-color: #1226aa;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+}
+
+#alerta-config-page .icon-config-page img {
+	max-width: 32px;
 }
