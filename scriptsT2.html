@@ -1,4 +1,22 @@
 <script>
+    /******************************** Esconder Indice generado para la integracion con C4C *******************************/
+    function esconderIndiceIntegracion() {
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                const urlActual = window.location.href;
+                const estaEnUnIframe = window !== window.top;
+                if (urlActual.startsWith('https://osde-prod2.mindtouch.us/') && !estaEnUnIframe) {
+                    const indiceIntegracion = document.querySelector('.indiceIntegracion');
+                    if (indiceIntegracion) {
+                        indiceIntegracion.style.display = 'none';
+                    }
+                }
+            }, 500);
+        });
+    }
+    esconderIndiceIntegracion();
+</script>
+<script>
     /******************************** Orden Filtros en Lista de Resultados *******************************/
     window.addEventListener("load", function () {
         if (window.location.href.startsWith("https://osde-prod2.mindtouch.us/Special:Search")) {
@@ -18,9 +36,9 @@
         }
     })
 </script>
-<!-- Google Tag Manager -->
 <script>
-    (function (w, d, s, l, i) {
+        /******************************** Google Tag Manager *******************************/
+        (function (w, d, s, l, i) {
         w[l] = w[l] || [];
         w[l].push({
             'gtm.start': new Date().getTime(),
@@ -35,7 +53,7 @@
         f.parentNode.insertBefore(j, f);
     })(window, document, 'script', 'dataLayer', 'GTM-P9XLPPW2');
 </script>
-<!-- End Google Tag Manager -->
+<!-- Librerias: Popper.js y Tippy.js para colocar iconos en los tooltips -->
 <script src="https://unpkg.com/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
 <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.min.js"></script>
 <script>
@@ -707,21 +725,28 @@
         if (window.location.href.startsWith("https://osde-prod2.mindtouch.us/Special:Search")) {
             let urlPrevia;
             urlPrevia = window.location.href;
-           
-            function obtenerTerminoDeBusqueda(urlActual) {
-                    let queryUrl, queryIndex, query, termino, terminoBuscado;
 
-                    queryUrl = urlActual.split('query=');
-                    queryIndex = queryUrl[1].toString();
-                    query = queryIndex.replace(/\+/g, ' ');
-                    termino = query.split('&type=wiki');
-                    terminoBuscado = termino[0].toString();
-                    console.log("queryIndex: ", terminoBuscado);
-                    
-                    dataLayer.push({
-                    'event': 'Buscador',
-                    'termino_buscado': terminoBuscado
-                });
+            function obtenerTerminoDeBusqueda(urlActual) {
+                let queryUrl, queryIndex, query, termino, terminoBuscado, tipoDeCatalogo;
+
+                queryUrl = urlActual.split('query=');
+                queryIndex = queryUrl[1].toString();
+                query = queryIndex.replace(/\+/g, ' ');
+                termino = query.split('&type=wiki');
+                terminoBuscado = termino[0].toString();
+                console.log("terminoBuscado: ", terminoBuscado);
+
+                if (query.includes("classifications")) {
+                    const tipoCheckboxes = document.querySelectorAll('.mt-search-filters-classification-tipo input[type="checkbox"]');
+
+                    for (let i = 0; i < tipoCheckboxes.length; i++) {
+                        const checkbox = tipoCheckboxes[i];
+                        checkbox.addEventListener('click', (event) => {
+                            tipoDeCatalogo = event.target.value.split(':');
+                            console.log('El usuario hizo clic en el checkbox con valor:', tipoDeCatalogo[1]);
+                        });
+                    }
+                }
             }
 
             function ejecutarCorreccion2Llaves() {
@@ -736,8 +761,8 @@
             setInterval(function () {
                 let urlActual = window.location.href;
                 ejecutarCorreccion2Llaves();
-               
-                if(urlActual !== urlPrevia){
+
+                if (urlActual !== urlPrevia) {
                     obtenerTerminoDeBusqueda(urlActual);
                     urlPrevia = urlActual;
                 }
@@ -873,21 +898,24 @@
                     textoEnNodo.nodeValue = "Caracter\u00EDsticas";
                 }
                 //******************METRICAS FILTROS DE BUSQUEDA******************************** 
-                const tipoCheckboxes = document.querySelectorAll(
-                    '.mt-search-filters-classification-tipo input[type="checkbox"]');
+                const tipoCheckboxes = document.querySelectorAll('.mt-search-filters-classification-tipo input[type="checkbox"]');
+                let terminoBuscado;
+                if (tipoCheckboxes) {
 
-                for (let i = 0; i < tipoCheckboxes.length; i++) {
-                    const checkbox = tipoCheckboxes[i];
-                    checkbox.addEventListener('click', (event) => {
-                        const tipoDeCatalogo = event.target.value.split(':');
-                        console.log('El usuario hizo clic en el checkbox con valor:',
-                            tipoDeCatalogo[1]);
-
-                        dataLayer.push({
-                            'event': 'filtro',
-                            'filtro_categoria': 'Catalogo',
-                            'filtro_nombre': tipoDeCatalogo[1],
+                    for (let i = 0; i < tipoCheckboxes.length; i++) {
+                        const checkbox = tipoCheckboxes[i];
+                        checkbox.addEventListener('click', (event) => {
+                            const tipoDeCatalogo = event.target.value.split(':');
+                            console.log('El usuario hizo clic en el checkbox con valor:', tipoDeCatalogo[1]);
                         });
+                    }
+                    terminoBuscado = obtenerTerminoDeBusqueda();
+                    console.log("terminoBuscado: ", terminoBuscado);
+                    dataLayer.push({
+                        'event': 'Buscador',
+                        'termino_buscado': terminoBuscado,
+                        'filtro_categoria': '',
+                        'filtro_nombre': ''
                     });
                 }
 
